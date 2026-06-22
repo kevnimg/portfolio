@@ -1,1 +1,526 @@
-<h1>Hola mundo</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diables Canovelles</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --text:#111;
+    --bg:#f7f4ee;
+    --max-width:1400px;
+    --transition:.4s ease;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    color:var(--text);
+    background:#f5f1e9;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero{
+
+    min-height:100vh;
+
+    background-image:url("assets/pergamino.jpg");
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(255,255,255,.15);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+}
+
+.hero-logo{
+    width:260px;
+    max-width:80vw;
+}
+
+.hero-menu{
+
+    margin-top:50px;
+
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.hero-menu a{
+
+    color:#111;
+    text-decoration:none;
+
+    font-size:18px;
+    transition:.3s;
+}
+
+.hero-menu a:hover{
+    opacity:.5;
+}
+
+/* ---------------- LAYOUT ---------------- */
+
+.wrapper{
+
+    max-width:var(--max-width);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:260px 1fr;
+
+    gap:80px;
+
+    padding:120px 40px;
+}
+
+/* ---------------- SIDEBAR ---------------- */
+
+.sidebar{
+
+    position:sticky;
+    top:100px;
+
+    height:max-content;
+}
+
+.sidebar ul{
+
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.sidebar a{
+
+    text-decoration:none;
+    color:#111;
+    font-weight:500;
+
+    transition:.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+
+    opacity:.4;
+}
+
+/* ---------------- CONTENT ---------------- */
+
+.content{
+    display:flex;
+    flex-direction:column;
+    gap:200px;
+}
+
+.section{
+
+    opacity:0;
+    transform:translateY(40px);
+
+    transition:.8s ease;
+}
+
+.section.visible{
+
+    opacity:1;
+    transform:translateY(0);
+}
+
+.section-header{
+
+    margin-bottom:60px;
+}
+
+.section-number{
+
+    font-size:14px;
+    letter-spacing:3px;
+
+    margin-bottom:12px;
+}
+
+.section-title{
+
+    font-size:clamp(2rem,5vw,5rem);
+    font-weight:700;
+}
+
+.section-description{
+
+    max-width:700px;
+
+    margin-top:20px;
+
+    font-size:18px;
+    line-height:1.7;
+}
+
+/* ---------------- PREVIEW ---------------- */
+
+.preview{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.06);
+}
+
+.preview img{
+
+    width:100%;
+    display:block;
+}
+
+/* ---------------- BUTTON ---------------- */
+
+.button{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-top:40px;
+
+    padding:16px 28px;
+
+    background:black;
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:999px;
+
+    transition:.3s;
+}
+
+.button:hover{
+
+    transform:translateY(-2px);
+}
+
+/* ---------------- PLACEHOLDER ---------------- */
+
+.placeholder{
+
+    height:500px;
+
+    border:2px dashed rgba(0,0,0,.15);
+
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:992px){
+
+    .wrapper{
+
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .sidebar{
+
+        position:relative;
+        top:auto;
+    }
+
+    .sidebar ul{
+
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .content{
+        gap:120px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <img
+            class="hero-logo"
+            src="assets/logo-blanco.png"
+            alt="Diables Canovelles">
+
+        <div class="hero-menu">
+
+            <a href="#identidad">Identidad</a>
+            <a href="#tipografia">Tipografía</a>
+            <a href="#universo">Universo</a>
+            <a href="#conquesta">La Conquesta</a>
+            <a href="#vestuario">Vestuario</a>
+            <a href="#forcas">Forcas</a>
+            <a href="#aplicaciones">Aplicaciones</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="wrapper">
+
+    <aside class="sidebar">
+
+        <ul>
+
+            <li><a href="#identidad">Identidad</a></li>
+            <li><a href="#tipografia">Tipografía</a></li>
+            <li><a href="#universo">Universo</a></li>
+            <li><a href="#conquesta">La Conquesta</a></li>
+            <li><a href="#vestuario">Vestuario</a></li>
+            <li><a href="#forcas">Forcas</a></li>
+            <li><a href="#aplicaciones">Aplicaciones</a></li>
+
+        </ul>
+
+    </aside>
+
+    <main class="content">
+
+        <!-- IDENTIDAD -->
+
+        <section id="identidad" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">01</div>
+
+                <h2 class="section-title">
+                    Identidad Visual
+                </h2>
+
+                <p class="section-description">
+                    Sistema visual desarrollado para Diables Canovelles.
+                </p>
+
+            </div>
+
+            <div class="preview">
+
+                <img
+                src="assets/identidad-preview.jpg"
+                alt="Identidad">
+
+            </div>
+
+            <a
+            class="button"
+            href="assets/brandmanual.pdf"
+            target="_blank">
+
+                Ver Brand Manual Completo
+
+            </a>
+
+        </section>
+
+        <!-- TIPOGRAFIA -->
+
+        <section id="tipografia" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">02</div>
+
+                <h2 class="section-title">
+                    Tipografía
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección Tipografía
+            </div>
+
+        </section>
+
+        <!-- UNIVERSO -->
+
+        <section id="universo" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">03</div>
+
+                <h2 class="section-title">
+                    Universo
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección Universo
+            </div>
+
+        </section>
+
+        <!-- CONQUESTA -->
+
+        <section id="conquesta" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">04</div>
+
+                <h2 class="section-title">
+                    La Conquesta
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección La Conquesta
+            </div>
+
+        </section>
+
+        <!-- VESTUARIO -->
+
+        <section id="vestuario" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">05</div>
+
+                <h2 class="section-title">
+                    Vestuario
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección Vestuario
+            </div>
+
+        </section>
+
+        <!-- FORCAS -->
+
+        <section id="forcas" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">06</div>
+
+                <h2 class="section-title">
+                    Forcas
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección Forcas
+            </div>
+
+        </section>
+
+        <!-- APLICACIONES -->
+
+        <section id="aplicaciones" class="section">
+
+            <div class="section-header">
+
+                <div class="section-number">07</div>
+
+                <h2 class="section-title">
+                    Aplicaciones
+                </h2>
+
+            </div>
+
+            <div class="placeholder">
+                Aquí irá la sección Aplicaciones
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+        }
+
+    });
+
+},{
+    threshold:0.15
+});
+
+document.querySelectorAll('.section').forEach(section=>{
+
+    observer.observe(section);
+
+});
+
+</script>
+
+</body>
+</html>
