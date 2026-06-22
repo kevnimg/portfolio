@@ -1,1 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Kevin Moran Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#0b0b0b;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+
+    padding:120px 40px;
+}
+
+.bg-logo{
+
+    position:absolute;
+
+    width:min(1200px,90vw);
+
+    opacity:.06;
+
+    z-index:0;
+}
+
+.hero-content{
+
+    position:relative;
+    z-index:2;
+
+    text-align:center;
+
+    max-width:900px;
+}
+
+.logo{
+
+    width:180px;
+    margin-bottom:60px;
+}
+
+.hero h1{
+
+    font-size:clamp(2.2rem,5vw,4.5rem);
+    line-height:1.1;
+    font-weight:600;
+
+    margin-bottom:30px;
+}
+
+.hero p{
+
+    font-size:1.25rem;
+    line-height:1.7;
+
+    opacity:.8;
+}
+
+/* PROJECTS */
+
+.projects{
+
+    width:min(1400px,92%);
+    margin:auto;
+
+    padding-bottom:150px;
+}
+
+.project{
+
+    margin-bottom:180px;
+
+    opacity:0;
+    transform:translateY(60px);
+
+    transition:.9s ease;
+}
+
+.project.visible{
+
+    opacity:1;
+    transform:translateY(0);
+}
+
+.project-image{
+
+    overflow:hidden;
+    border-radius:18px;
+
+    margin-bottom:35px;
+}
+
+.project-image img{
+
+    width:100%;
+    display:block;
+
+    transition:transform .8s ease;
+}
+
+.project:hover .project-image img{
+
+    transform:scale(1.03);
+}
+
+.project-content{
+
+    max-width:650px;
+}
+
+.project h2{
+
+    font-size:clamp(2rem,4vw,3.5rem);
+
+    margin-bottom:15px;
+}
+
+.project h3{
+
+    font-size:1rem;
+
+    text-transform:uppercase;
+    letter-spacing:2px;
+
+    opacity:.6;
+
+    margin-bottom:20px;
+}
+
+.project p{
+
+    font-size:1.1rem;
+    line-height:1.8;
+
+    opacity:.8;
+
+    margin-bottom:35px;
+}
+
+/* BOTÓN */
+
+.project-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:240px;
+    height:68px;
+
+    background:white;
+    color:black;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    clip-path:polygon(
+        12% 0,
+        100% 0,
+        88% 100%,
+        0 100%
+    );
+
+    transition:.35s ease;
+
+    border:2px solid transparent;
+}
+
+.project-btn:hover{
+
+    background:transparent;
+    color:white;
+    border:2px solid white;
+}
+
+/* FOOTER */
+
+.footer{
+
+    text-align:center;
+
+    padding:120px 20px;
+
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.footer p{
+
+    opacity:.6;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero{
+
+        padding:100px 25px;
+    }
+
+    .logo{
+
+        width:130px;
+    }
+
+    .project{
+
+        margin-bottom:120px;
+    }
+
+    .project-btn{
+
+        width:200px;
+        height:60px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+    <img class="bg-logo"
+         src="https://lh3.googleusercontent.com/sitesv/AA5AbUA2VZDM83lVCznf4zTWST7LFoSn4iErD5WIG8-IyZksSe3BABQY9Y59Cow1Y7-9prq_H3o5YskxdrNMDTuBFjrPr95Rb8BSENbq1zIg1QnwVj6AcMwgTUEHErTvcpXZ22buyEGOIcDOv4jQIgooQtLm6ezZ-Do20LU7sCFNA8ekBTjIk59l4mKqXoXI=w16383"
+         alt="KM">
+
+    <div class="hero-content">
+
+        <img class="logo"
+             src="https://lh3.googleusercontent.com/sitesv/AA5AbUCqdJklQVX3NiKLZLjoCv_mJC8t0ixaa7dl6sR2WDNMIi28q1-9NGJNkFQ0j8waaJcvDjeziW0H6rjr_CjXXieQdbcLYSAnj7r1cstPIR15ZAqk0HQf-kRBCaEny5zN_XFz-Wa8aPBQ2FoGsAkO_Bd67C0k_wCN6EbW-jSfVnbQMvbZlMtIUq8iq_1SurEzka_fVRvYYPB65ZZUY17MntjA3QvDcswKXqzYe1DLsIE=w1280"
+             alt="Kevin Moran">
+
+        <h1>
+            Diseño identidades visuales que conectan estrategia, identidad y comunicación
+        </h1>
+
+    </div>
+
+</section>
+
+<section class="projects">
+
+    <article class="project">
+        <div class="project-image">
+            <img src="https://cdn.myportfolio.com/a38966f9-9273-46a8-9738-94cd89546f22/bb828076-b6cc-43ca-9583-bf4df88bf772.jpg?h=a5d883d587e849f37ebc758ef12afa4c">
+        </div>
+
+        <div class="project-content">
+            <h2>Runbott</h2>
+            <h3>Brand & Visual Design</h3>
+            <p>Gestión de identidad visual, contenido y comunicación de marca.</p>
+            <a href="#" class="project-btn">Ver proyecto</a>
+        </div>
+    </article>
+
+    <article class="project">
+        <div class="project-image">
+            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAORTPwM_-vSsueZWXGJjPINdHcUQIdY-uuTEbvmMbUf46YsMW-66IppDqU90QDLepf0YPDBjy5wt8baZtllRofeZlgxCVQnkwocVvVEjTWa_HYY3UnUURX21oeovPLCsXgrOCn1YqP6gHtJKOIO5JYAduKqoBTPoQFtQfwt-S6iXZpmhS1zsKjXT2NEe885jJk22FfLLhqVn4rtOw8PKKtQNGM00Fc0R0NfTSU=w1280">
+        </div>
+
+        <div class="project-content">
+            <h2>Diables de Cànoves</h2>
+            <h3>Identity & Cultural Branding</h3>
+            <p>Creación de identidad visual, sistema gráfico y aplicaciones para una asociación cultural catalana.</p>
+            <a href="#" class="project-btn">Ver proyecto</a>
+        </div>
+    </article>
+
+    <article class="project">
+        <div class="project-image">
+            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUA3awO6G2k_Nuwz-CpGWewiwEf6r1OcOjJaUzp7bY4kNKujstJ2g-yKAbU51KoNo152HwAYIGRquO7IbDMTPbPLPspQHpHhsuLIQRMMTb2SVZqQ7dJwWC9ASqatvsUzH_pCfaIBtylSHHFNjcX4Y4T17tO69sJW2nXZ4iX1O9CJm455fWcATyj9S47YlKKqSU_KhLyiyHcG-YE2vC96tSEj4ETRo0eNBgEF3Apl0R0=w1280">
+        </div>
+
+        <div class="project-content">
+            <h2>Toms</h2>
+            <h3>Rebranding & Brand Strategy</h3>
+            <p>Replanteamiento estratégico e identidad visual para una nueva dirección de marca contemporánea.</p>
+            <a href="#" class="project-btn">Ver proyecto</a>
+        </div>
+    </article>
+
+    <article class="project">
+        <div class="project-image">
+            <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUAflG-GFLOVzrI7BtVVB4-TqWVZzQPs_o-6ac8cuwQ8NNAfZQlOCJIx9b06WVZVU7zrEuF1AnhyfSGSS4RGT9u1oXVoJ0PdyoowoP0AnFJqpcdWivrIoaLjJCqvkdVxkI0aJtJf4DQAVhINamMxxt2UEuXJh19z7qOOR3p5_246c2gZqOaxtgRFbHAnNsf3eY4H7apZl-QkKJUaZqvVMlGIvPNqtCEwO1uVGuZS=w1280">
+        </div>
+
+        <div class="project-content">
+            <h2>Hearvy</h2>
+            <h3>Brand Identity & Visual System</h3>
+            <p>Desarrollo completo de una marca desde concepto, naming, identidad visual y sistema gráfico.</p>
+            <a href="#" class="project-btn">Ver proyecto</a>
+        </div>
+    </article>
+
+</section>
+
+<footer class="footer">
+    <p>Kevin Moran Portfolio</p>
+</footer>
+
+<script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+        }
+
+    });
+
+},{
+    threshold:.15
+});
+
+document.querySelectorAll('.project').forEach(project=>{
+
+    observer.observe(project);
+
+});
+
+</script>
+
+</body>
+</html>
