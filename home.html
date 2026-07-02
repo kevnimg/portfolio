@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kevin Moran | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Inter,sans-serif;background:#121418;color:#fff}
+img{display:block;max-width:100%}
+.hero{position:relative;height:78vh;min-height:560px;overflow:hidden}
+.hero>img.bg{width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:2;padding:40px}
+.hero .logo{width:170px;margin-bottom:40px}
+.claim{font-size:clamp(22px,3vw,42px);font-weight:600;max-width:950px;text-align:center}
+.wrap{width:min(1200px,92%);margin:auto;padding:80px 0}
+.block{margin:110px 0;opacity:0;transform:translateY(40px);transition:.8s}
+.block.show{opacity:1;transform:none}
+.full img,.center img{border-radius:8px}
+.full .txt,.center .txt{margin-top:18px}
+.side{display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}
+.side.reverse{grid-template-columns:.8fr 1.2fr}
+.center{text-align:center}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card img{border-radius:8px;transition:.5s}
+.full img,.side img,.center img{transition:.5s}
+.full:hover img,.side:hover img,.center:hover img,.card:hover img{transform:scale(1.03)}
+h2{font-size:clamp(30px,3vw,48px);margin-bottom:8px}
+h4{text-transform:uppercase;font-size:14px;letter-spacing:2px;opacity:.65;margin-bottom:14px}
+p{line-height:1.8;opacity:.85}
+.section-title{text-align:center;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;justify-content:center;margin-top:26px;width:220px;height:60px;background:#fff;color:#111;text-decoration:none;font-weight:700;clip-path:polygon(12% 0,100% 0,88% 100%,0 100%);border:2px solid transparent;transition:.3s}
+.btn:hover{background:transparent;color:#fff;border-color:#fff}
+.more{text-align:center;margin-top:50px}
+@media(max-width:900px){
+.side,.side.reverse,.grid3{grid-template-columns:1fr}
+.hero{height:65vh}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<img class="bg" src="assets/images/img-luz-mides.jpg" alt="">
+<div class="hero-content">
+<img class="logo" src="assets/images/k-kevin_moran.png" alt="">
+<div class="claim">Diseño identidades visuales que conectan estrategia, identidad y comunicación</div>
+</div>
+</header>
+
+<main class="wrap">
+
+<section class="block full">
+<img src="assets/images/runbott-home.jpg" alt="">
+<div class="txt">
+<h2>Runbott</h2>
+<h4>Brand & Visual Design</h4>
+<p>Gestión de identidad visual, contenido y comunicación de marca.</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+</section>
+
+<section class="block side">
+<img src="assets/images/diables_de_canoves_1.jpg" alt="">
+<div>
+<h2>Diables de Cànoves</h2>
+<h4>Identity & Cultural Branding</h4>
+<p>Creación de identidad visual, sistema gráfico y aplicaciones para una asociación cultural catalana.</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+</section>
+
+<section class="block center">
+<img src="assets/images/TOMS1.jpg" alt="">
+<div class="txt">
+<h2>Toms</h2>
+<h4>Rebranding & Brand Strategy</h4>
+<p>Replanteamiento estratégico e identidad visual para una nueva dirección de marca contemporánea.</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+</section>
+
+<section class="block side reverse">
+<div>
+<h2>Hearvey</h2>
+<h4>Brand Identity & Visual System</h4>
+<p>Desarrollo completo de una marca desde concepto, naming, identidad visual y sistema gráfico.</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+<img src="assets/images/Hearvy.png" alt="">
+</section>
+
+<section class="block full">
+<img src="assets/images/Shaidans.png" alt="">
+<div class="txt">
+<h2>Shaidans</h2>
+<h4>Visual Identity & Typeface System</h4>
+<p>Desarrollo de identidad visual, sistema gráfico y tipografía personalizada para una marca conceptual de e-sports.</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+</section>
+
+<section class="block">
+<h2 class="section-title">Conceptos creativo</h2>
+<div class="grid3">
+<div class="card">
+<img src="assets/images/the_boys.png">
+<h3>The Boys</h3>
+<p>Concept & Brand Content</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+<div class="card">
+<img src="assets/images/cupra.png">
+<h3>Cupra X EsDesign</h3>
+<p>Branding & Visual Experience</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+<div class="card">
+<img src="assets/images/puma.png">
+<h3>Puma</h3>
+<p>Aplication Concept</p>
+<a href="#" class="btn">Ver proyecto</a>
+</div>
+</div>
+<div class="more"><a href="#" class="btn">Ver más</a></div>
+</section>
+
+</main>
+
+<script>
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add('show');}
+});
+},{threshold:.15});
+document.querySelectorAll('.block').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
