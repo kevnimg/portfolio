@@ -279,6 +279,82 @@ HERO
 IDENTIDAD VISUAL
 =====================================================*/
 
+
+/*=====================================================
+Tipografía
+=====================================================*/
+
+
+/*=====================================================
+LA CONQUESTA
+=====================================================*/
+
+.stories-slider{
+
+    margin-top:70px;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.story-track{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.story{
+
+    width:170px;
+
+    transition:.45s;
+
+    cursor:pointer;
+
+    opacity:.45;
+
+    transform:scale(.8);
+
+}
+
+.story img{
+
+    width:100%;
+
+    border-radius:18px;
+
+    display:block;
+
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+.story.active{
+
+    width:330px;
+
+    opacity:1;
+
+    transform:scale(1);
+
+    z-index:10;
+
+}
+
+.story:hover{
+
+    opacity:.8;
+
+}
+
 .section{
 
     width:min(1150px,90%);
@@ -456,6 +532,44 @@ IDENTIDAD VISUAL
 
 }
 
+.stories-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:30px;
+
+}
+
+.story-arrow{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:#111;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.story-arrow:hover{
+
+    transform:scale(1.1);
+
+}
+
 /***************************
 RESPONSIVE
 ***************************/
@@ -561,6 +675,109 @@ IDENTIDAD VISUAL
 
 </section>
 
+<!-- ===========================================================
+TIPOGRAFÍA
+=========================================================== -->
+
+<section id="tipografia" class="section">
+
+    <div class="section-header">
+
+        <span class="section-number">02</span>
+
+        <div>
+
+            <h2>Tipografía</h2>
+
+            <p class="section-description">
+                Creación de una tipografía exclusiva en caja alta diseñada para titulares.
+                Su construcción parte del carácter gráfico de la identidad y aporta una
+                personalidad propia y reconocible a la comunicación de la marca.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="typography-container">
+
+        <img
+            src="assets/images/BLue-devil-canoves.png"
+            alt="Tipografía Diables de Cànoves"
+        >
+
+    </div>
+
+</section>
+
+<!-- ===========================================================
+LA CONQUESTA
+=========================================================== -->
+
+<section id="conquesta" class="section">
+
+    <div class="section-header">
+
+        <span class="section-number">03</span>
+
+        <div>
+
+            <h2>La Conquesta</h2>
+
+            <p class="section-description">
+
+                La Conquesta es un evento creado para explicar el origen de los
+                Diables de Cànoves mediante una representación teatral de su
+                llegada al pueblo. La historia enfrenta a Sant Ponç, como símbolo
+                del bien, con los Diables, representación del mal, dando lugar a
+                un relato que une patrimonio, tradición e identidad visual en una
+                experiencia cultural inmersiva.
+
+            </p>
+
+        </div>
+
+    </div>
+<div class="stories-wrapper">
+
+    <button class="story-arrow prev">
+        &#10094;
+    </button>
+    <div class="stories-slider">
+
+        <div class="story-track">
+
+            <div class="story">
+                <img src="assets/images/la-conquesta_Story (1).jpg">
+            </div>
+
+            <div class="story">
+                <img src="assets/images/la-conquesta_Story (2).jpg">
+            </div>
+
+            <div class="story active">
+                <img src="assets/images/la-conquesta_Story (3).jpg">
+            </div>
+
+            <div class="story">
+                <img src="assets/images/la-conquesta_Story (4).jpg">
+            </div>
+
+            <div class="story">
+                <img src="assets/images/la-conquesta_Story (5).jpg">
+            </div>
+
+        
+        </div>
+
+    </div>
+
+    <button class="story-arrow next">
+        &#10095;
+    </button>
+
+</section>
+
 <script>
 
 const menuLinks=document.querySelectorAll(".sidebar a");
@@ -586,6 +803,54 @@ behavior:"smooth"
 });
 
 });
+
+/*=====================================================
+TIPOGRAFÍA
+=====================================================*/
+
+const typography = document.querySelector(".typography-container");
+
+const typographyObserver = new IntersectionObserver(entries=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.animate(
+
+                [
+
+                    {
+                        opacity:0,
+                        transform:"translateY(60px)"
+                    },
+
+                    {
+                        opacity:1,
+                        transform:"translateY(0)"
+                    }
+
+                ],
+
+                {
+
+                    duration:900,
+                    easing:"cubic-bezier(.2,.8,.2,1)",
+                    fill:"forwards"
+
+                }
+
+            );
+
+        }
+
+    });
+
+},{
+    threshold:.2
+});
+
+typographyObserver.observe(typography);
 
 </script>
 
