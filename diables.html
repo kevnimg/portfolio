@@ -1,1 +1,594 @@
-<!DOCTYPE html><html lang='es'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Diables</title><style>body{margin:0;font-family:Arial;background:#e8e0cf}main{width:min(1000px,92%);margin:auto}section{padding:60px 0}img{max-width:100%;display:block}.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.gallery img{cursor:pointer}#lb{display:none;position:fixed;inset:0;background:#000c;align-items:center;justify-content:center}#lb img{max-width:90vw;max-height:90vh}</style></head><body><main><section><img src='assets/images/Logo-diables-1.png'></section><section><h2>Identidad Visual</h2><img src='assets/images/identidad_visual-diables.png'></section><section><h2>Tipografía</h2><img src='assets/images/BLue-devil-canoves.png'></section><section><h2>La Conquesta</h2><div class='gallery'><img src='assets/images/la-conquesta_Story (1).jpg'><img src='assets/images/la-conquesta_Story (2).jpg'><img src='assets/images/la-conquesta_Story (3).jpg'><img src='assets/images/la-conquesta_Story (4).jpg'><img src='assets/images/la-conquesta_Story (5).jpg'></div></section><section><h2>Vestuario</h2><div class='gallery'><img src='assets/images/IMG_0423.jpg'><img src='assets/images/IMG_0415.jpg'><img src='assets/images/IMG_4265.jpg'><img src='assets/images/traje-diable.png'><img src='assets/images/traje-diablessa.png'></div></section><section><h2>Forques</h2><div class='gallery'><img src='assets/images/forca-diablessa.jpg'><img src='assets/images/forca-diables.jpg'><img src='assets/images/IMG_0524.jpg'><img src='assets/images/IMG_0538.jpg'><img src='assets/images/escudo-canoves.png'></div></section><section><h2>Aplicaciones</h2><div class='gallery'><img src='assets/images/8m-2024.jpg'><img src='assets/images/vasos-canoves.png'><img src='assets/images/SAN_JORDI.jpg'><img src='assets/images/diada-23.jpg'><img src='assets/images/sudadera-canoves.png'><img src='assets/images/camiseta-canoves.png'><img src='assets/images/FM-HIVERN-25.jpg'><img src='assets/images/Tabalada.jpg'><img src='assets/images/carretillada-samalus-canoves.png'><img src='assets/images/nadal23-1.jpg'><img src='assets/images/jawelin-2022.jpg'></div></section></main><div id='lb'><img></div><script>const lb=document.getElementById('lb'),im=lb.querySelector('img');document.querySelectorAll('.gallery img').forEach(i=>i.onclick=()=>{lb.style.display='flex';im.src=i.src});lb.onclick=()=>lb.style.display='none';</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Diables de Cànoves</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    color:#111;
+
+    overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(255,255,255,.45),
+    transparent 60%),
+
+    linear-gradient(
+    180deg,
+    #ece5d5 0%,
+    #e6dece 45%,
+    #ddd3bf 100%);
+
+}
+
+
+/********************************
+TEXTURA PERGAMINO
+********************************/
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.045;
+
+    z-index:-1;
+
+    background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+
+}
+
+/***************************
+MENU
+***************************/
+
+.sidebar{
+
+    position:fixed;
+
+    left:50px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    z-index:999;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    margin:22px 0;
+
+}
+
+.sidebar a{
+
+    color:#222;
+
+    text-decoration:none;
+
+    font-size:.95rem;
+
+    font-weight:500;
+
+    transition:.35s;
+
+    position:relative;
+
+    opacity:.6;
+
+}
+
+.sidebar a:hover{
+
+    opacity:1;
+
+    padding-left:12px;
+
+}
+
+.sidebar a.active{
+
+    opacity:1;
+
+    font-weight:700;
+
+}
+
+.sidebar a.active::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-18px;
+    top:50%;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#2F5CFF;
+
+    transform:translateY(-50%);
+
+}
+
+/***************************
+HERO
+***************************/
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    flex-direction:column;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Luz superior */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:900px;
+    height:900px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+    circle,
+
+    rgba(255,255,255,.45),
+
+    transparent 70%
+
+    );
+
+    top:-350px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:0;
+
+}
+
+/* Mancha de tinta */
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+
+    circle,
+
+    rgba(0,0,0,.04),
+
+    transparent 70%
+
+    );
+
+    bottom:-420px;
+
+    right:-180px;
+
+}
+
+.hero-logo{
+
+    width:340px;
+
+    position:relative;
+
+    z-index:2;
+
+    filter:
+
+        drop-shadow(0 20px 35px rgba(0,0,0,.15));
+
+    opacity:0;
+
+    transform:translateY(35px) scale(.96);
+
+    animation:logoAppear 1.4s ease forwards;
+
+}
+
+@keyframes logoAppear{
+
+    to{
+
+        opacity:1;
+
+        transform:
+
+        translateY(0)
+
+        scale(1);
+
+    }
+
+}
+
+/*=====================================================
+IDENTIDAD VISUAL
+=====================================================*/
+
+.section{
+
+    width:min(1150px,90%);
+
+    margin:auto;
+
+    padding:130px 0;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    margin-bottom:60px;
+
+}
+
+.section-number{
+
+    font-size:4rem;
+
+    font-weight:200;
+
+    color:#b8ad98;
+
+    min-width:80px;
+
+}
+
+.section-header h2{
+
+    font-size:3rem;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+.section-description{
+
+    max-width:520px;
+
+    line-height:1.8;
+
+    color:#555;
+
+}
+
+.identity-image{
+
+    overflow:hidden;
+
+    border-radius:10px;
+
+}
+
+.identity-image img{
+
+    width:100%;
+
+    display:block;
+
+    transition:transform .8s ease;
+
+}
+
+.identity-image:hover img{
+
+    transform:scale(1.02);
+
+}
+
+.identity-button{
+
+    margin-top:45px;
+
+}
+
+.identity-button a{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    text-decoration:none;
+
+    color:#111;
+
+    font-weight:600;
+
+    padding:18px 32px;
+
+    border:2px solid #111;
+
+    transition:.35s;
+
+    clip-path:polygon(
+        12% 0,
+        100% 0,
+        88% 100%,
+        0 100%
+    );
+
+}
+
+.identity-button a:hover{
+
+    background:#111;
+
+    color:white;
+
+}
+
+.identity-button span{
+
+    font-size:1.2rem;
+
+}
+
+.scroll{
+
+    position:absolute;
+
+    bottom:40px;
+
+    font-size:.8rem;
+
+    letter-spacing:3px;
+
+    opacity:.45;
+
+    animation:float 2s infinite;
+
+}
+
+@keyframes logoFade{
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/***************************
+RESPONSIVE
+***************************/
+
+@media(max-width:900px){
+
+.sidebar{
+
+display:none;
+
+}
+
+.hero-logo{
+
+width:240px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="sidebar">
+
+<ul>
+
+<li><a href="#identidad" class="active">Identidad</a></li>
+
+<li><a href="#tipografia">Tipografía</a></li>
+
+<li><a href="#conquesta">La Conquesta</a></li>
+
+<li><a href="#vestuario">Vestuario</a></li>
+
+<li><a href="#forques">Forques</a></li>
+
+<li><a href="#aplicaciones">Aplicaciones</a></li>
+
+</ul>
+
+</nav>
+
+<header class="hero">
+
+<img
+class="hero-logo"
+src="assets/images/Logo-diables-1.png"
+alt="Diables de Cànoves">
+
+<div class="scroll">
+
+SCROLL
+
+</div>
+
+</header>
+
+<!-- ===========================================================
+IDENTIDAD VISUAL
+=========================================================== -->
+
+<section id="identidad" class="section">
+
+    <div class="section-header">
+
+        <span class="section-number">01</span>
+
+        <div>
+
+            <h2>Identidad Visual</h2>
+
+            <p class="section-description">
+                Sistema visual desarrollado para Diables de Cànoves.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="identity-image">
+
+        <img
+        src="assets/images/identidad_visual-diables_1.png"
+        alt="Identidad Visual Diables de Cànoves">
+
+    </div>
+
+    <div class="identity-button">
+
+        <a href="#">
+
+            Ver Brand Manual completo
+
+            <span>↗</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+<script>
+
+const menuLinks=document.querySelectorAll(".sidebar a");
+
+menuLinks.forEach(link=>{
+
+link.addEventListener("click",e=>{
+
+e.preventDefault();
+
+const target=document.querySelector(link.getAttribute("href"));
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
