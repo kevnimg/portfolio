@@ -19,7 +19,7 @@ html{
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Poppins',sans-serif;
     background:#fff;
     color:#111;
 }
@@ -27,193 +27,357 @@ body{
 /* =========================
    HERO
 ========================= */
-
 .hero{
     width:100%;
 }
 
+/* FOTO SUPERIOR */
+
 .hero-image{
     position:relative;
     width:100%;
+    height:650px;
     overflow:hidden;
 }
 
 .hero-image img{
     width:100%;
+    height:100%;
+    object-fit:cover;
     display:block;
-    height:auto;
 }
+
+/* LOGO BLANCO CENTRADO */
 
 .hero-logo{
     position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-
-    color:white;
-    font-size:clamp(4rem,7vw,7rem);
-    font-weight:300;
-    letter-spacing:2px;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
+
+.hero-logo img{
+    width:300px;
+    height:auto;
+}
+
+/* BLOQUE GRIS */
 
 .hero-info{
-
-    background:#efefef;
-
-    padding:
-        60px
-        10%
-        80px;
-
+    background:#fff;
     text-align:center;
+    padding:70px 10%;
 }
 
+/* TITULAR */
+
 .hero-info h1{
-
     max-width:1200px;
+    margin:0 auto 50px;
 
-    margin:0 auto 40px;
-
-    font-size:clamp(1.6rem,2vw,2.2rem);
+    font-size:24px;
     line-height:1.4;
+
     font-weight:700;
 }
 
+/* DESCRIPCIÓN */
+
 .hero-info p{
-
     max-width:1200px;
-
     margin:auto;
 
-    font-size:clamp(1.2rem,1.5vw,1.9rem);
+    font-size:18px;
     line-height:1.3;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.30);
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    color:white;
-}
-
-.hero h1{
-    font-size:clamp(3rem,8vw,7rem);
-    letter-spacing:8px;
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:1.2rem;
-    opacity:.9;
-}
-
-.scroll-indicator{
-    position:absolute;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    color:white;
-    font-size:.9rem;
-    z-index:2;
-    animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-    0%,20%,50%,80%,100%{
-        transform:translateX(-50%) translateY(0);
-    }
-    40%{
-        transform:translateX(-50%) translateY(-10px);
-    }
-    60%{
-        transform:translateX(-50%) translateY(-5px);
-    }
-}
-
-/* =========================
-   EQUIPOS
-========================= */
-
-.teams-section{
-    padding:120px 5%;
-}
-
-.section-title{
-    text-align:center;
-    font-size:3rem;
-    margin-bottom:20px;
-    letter-spacing:4px;
-}
-
-.section-description{
-    text-align:center;
-    color:#666;
-    max-width:700px;
-    margin:0 auto 80px;
-}
-
-.teams-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-}
-
-.card{
-    border-radius:24px;
-    overflow:hidden;
-}
-
-.card img{
-    width:100%;
-    height:650px;
-    object-fit:cover;
-    display:block;
-    transition:all .8s ease;
-}
-
-.fade{
-    opacity:0;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:1000px){
-
-    .teams-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .card img{
-        height:450px;
-    }
-}
+/* MÓVIL */
 
 @media(max-width:768px){
 
-    .hero h1{
-        letter-spacing:3px;
-    }
-
-    .teams-grid{
-        grid-template-columns:1fr;
-    }
-
-    .card img{
+    .hero-image{
         height:400px;
     }
 
-    .section-title{
-        font-size:2rem;
+    .hero-logo img{
+        width:180px;
     }
+
+    .hero-info h1{
+        font-size:18px;
+    }
+
+    .hero-info p{
+        font-size:16px;
+    }
+
+}
+/* ========================================
+   EQUIPOS OFICIALES
+======================================== */
+
+.official-teams h2 {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 8px;
+}
+
+.official-teams .section-description {
+  font-size: 16px;
+  line-height: 1.3;
+  margin: 0 0 28px;
+  max-width: 100%;
+}
+
+.official-teams {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ========================================
+   GRID PRINCIPAL
+======================================== */
+
+.teams-system {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 8px;
+
+  align-items: start;
+}
+
+
+/* ========================================
+   CADA EQUIPO
+======================================== */
+
+.team-group {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(.22,.61,.36,1);
+}
+
+
+/* ========================================
+   DISTRIBUCIÓN
+======================================== */
+
+/* REAL MADRID ACTIVO */
+
+.team-group[data-team="0"] {
+  grid-column: span 2;
+}
+
+
+/* FC BARCELONA */
+
+.team-group[data-team="1"] {
+  grid-column: span 1;
+}
+
+
+/* ATLÉTICO */
+
+.team-group[data-team="2"] {
+  grid-column: span 1;
+}
+
+
+/* FC BARCELONA ACTIVO */
+
+.teams-system.state-fcb .team-group[data-team="0"] {
+  grid-column: span 1;
+}
+
+.teams-system.state-fcb .team-group[data-team="1"] {
+  grid-column: span 2;
+}
+
+.teams-system.state-fcb .team-group[data-team="2"] {
+  grid-column: span 1;
+}
+
+
+/* ATLÉTICO ACTIVO */
+
+.teams-system.state-atm .team-group[data-team="0"] {
+  grid-column: span 1;
+}
+
+.teams-system.state-atm .team-group[data-team="1"] {
+  grid-column: span 1;
+}
+
+.teams-system.state-atm .team-group[data-team="2"] {
+  grid-column: span 2;
+}
+
+
+/* ========================================
+   IMÁGENES
+======================================== */
+
+.team-images {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 8px;
+}
+
+
+/* TODAS LAS SECUNDARIAS OCULTAS */
+
+.team-image.secondary {
+  display: none;
+}
+
+
+/* CUANDO EL EQUIPO ESTÁ ACTIVO,
+   MOSTRAR SU SEGUNDA IMAGEN */
+
+.team-group.has-secondary .team-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.team-group.has-secondary .team-image.secondary {
+  display: block;
+}
+
+
+/* ========================================
+   IMAGEN
+======================================== */
+
+.team-image {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 9 / 16;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #eee;
+}
+
+
+.team-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.7s ease;
+}
+
+
+.team-image:hover img {
+  transform: scale(1.025);
+}
+
+
+/* ========================================
+   BOTÓN
+======================================== */
+
+.team-button {
+  width: 82%;
+  min-height: 46px;
+
+  margin: 0 auto;
+
+  padding: 0 20px;
+
+  border: 0;
+
+  background: #000;
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  white-space: nowrap;
+
+  clip-path: polygon(
+    8% 0,
+    100% 0,
+    92% 100%,
+    0 100%
+  );
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.team-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* ========================================
+   ANIMACIÓN
+======================================== */
+
+.teams-system.is-changing .team-group {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 700px) {
+
+  .teams-system {
+    gap: 5px;
+  }
+
+  .team-images {
+    gap: 5px;
+  }
+
+  .team-button {
+    width: 100%;
+    min-height: 38px;
+    padding: 0 8px;
+    font-size: 10px;
+  }
+
 }
 
 </style>
@@ -228,9 +392,9 @@ body{
     <div class="hero-image">
 
         <img
-            src="/assets/images/runbott-homess="hero-logo">
+            src="/assets/images/runbott-home.jpg"hero-logo">
             runbott
-        </div>
+    </img>
 
     </div>
 
@@ -252,103 +416,234 @@ body{
 
 </header>
 
-<!-- EQUIPOS -->
 
-<section class="teams-section">
+<!--EQUIPOS-->
 
-    <h2 class="section-title">EQUIPOS OFICIALES</h2>
+<section id="official-teams" class="official-teams">
 
-    <p class="section-description">
-        Colección oficial desarrollada para Real Madrid, FC Barcelona y Atlético de Madrid.
-    </p>
+  <h2>Equipos Oficiales</h2>
 
-    <div class="teams-grid">
+  <p class="section-description">
+    Desarrollo de producto y dirección visual para colaboraciones oficiales con equipos deportivos como Real Madrid, FC Barcelona y Atlético de Madrid, entre otros. Desde el diseño gráfico aplicado a las botellas hasta la creación de contenido de producto, redes sociales y recursos digitales para web, construyendo una experiencia de marca coherente en cada punto de contacto.
+  </p>
 
-        <div class="card">
-            <img id=mages/STORY-1-REAL_MADRID-TEXTURE.jpg
-        </div>
+  <div class="teams-system" id="teamsSystem">
 
-        <div class="card">
-            /assets/images/REAL-MADRID-2.jpg
-        </div>
+    <!-- REAL MADRID -->
+    <div class="team-group" data-team="0">
 
-        <div class="card">
-            /assets/images/BANNER-FCB-TEXTURE-03.jpg
-        </div>
+      <div class="team-images">
 
-        <div class="card">
-            /assets/images/BANNER-ATM-TEXTURE-03.jpg
-        </div>
+        <a href="#" class="team-image">
+          <img
+            src="assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg"
+            alt="Real Madrid x Runbott"
+          >
+        </a>
+
+        <a href="#" class="team-image secondary">
+          <img
+            src="assets/images/REAL-MADRID-2.jpg"
+            alt="Real Madrid x Runbott"
+          >
+        </a>
+
+      </div>
+
+      <button class="team-button">
+        Real Madrid
+      </button>
 
     </div>
+
+
+    <!-- FC BARCELONA -->
+    <div class="team-group" data-team="1">
+
+      <div class="team-images">
+
+        <a href="#" class="team-image">
+          <img
+            src="assets/images/BANNER-FCB-TEXTURE-03.jpg"
+            alt="FC Barcelona x Runbott"
+          >
+        </a>
+
+        <a href="#" class="team-image secondary">
+          <img
+            src="assets/images/runbott-fcb-2.jpg"
+            alt="FC Barcelona x Runbott"
+          >
+        </a>
+
+      </div>
+
+      <button class="team-button">
+        FC Barcelona
+      </button>
+
+    </div>
+
+
+    <!-- ATLÉTICO DE MADRID -->
+    <div class="team-group" data-team="2">
+
+      <div class="team-images">
+
+        <a href="#" class="team-image">
+          <img
+            src="assets/images/BANNER-ATM-TEXTURE-03.jpg"
+            alt="Atlético de Madrid x Runbott"
+          >
+        </a>
+
+        <a href="#" class="team-image secondary">
+          <img
+            src="assets/images/BANNER-ATM-TEXTURE-VOLT.jpg"
+            alt="Atlético de Madrid x Runbott"
+          >
+        </a>
+
+      </div>
+
+      <button class="team-button">
+        Atlético de Madrid
+      </button>
+
+    </div>
+
+  </div>
 
 </section>
 
 <script>
 
-const states = [
+const teamsSystem = document.getElementById("teamsSystem");
 
-[
-"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
-"assets/images/REAL-MADRID-2.jpg",
-"assets/images/BANNER-FCB-TEXTURE-03.jpg",
-"assets/images/BANNER-ATM-TEXTURE-03.jpg"
-],
+const teamGroups = document.querySelectorAll(".team-group");
 
-[
-"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
-"assets/images/BANNER-FCB-TEXTURE-03.jpg",
-"assets/images/runbott-fcb-2.jpg",
-"assets/images/BANNER-ATM-TEXTURE-03.jpg"
-],
+let currentTeam = 0;
 
-[
-"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
-"assets/images/BANNER-FCB-TEXTURE-03.jpg",
-"assets/images/BANNER-ATM-TEXTURE-03.jpg",
-"assets/images/BANNER-ATM-TEXTURE-VOLT.jpg"
-]
 
-];
+/* ========================================
+   MOSTRAR ESTADO
+======================================== */
 
-let currentState = 0;
+function showTeam(teamIndex) {
 
-const slots = [
+  /* Animación de salida */
 
-document.getElementById("img1"),
-document.getElementById("img2"),
-document.getElementById("img3"),
-document.getElementById("img4")
+  teamsSystem.classList.add("is-changing");
 
-];
 
-function changeImages(){
+  setTimeout(() => {
 
-    currentState++;
+    /* Limpiar estado */
 
-    if(currentState >= states.length){
-        currentState = 0;
+    teamsSystem.classList.remove(
+      "state-fcb",
+      "state-atm"
+    );
+
+
+    /* Aplicar nuevo estado */
+
+    if (teamIndex === 1) {
+      teamsSystem.classList.add("state-fcb");
     }
 
-    slots.forEach(img => {
-        img.classList.add("fade");
+    if (teamIndex === 2) {
+      teamsSystem.classList.add("state-atm");
+    }
+
+
+    /* Añadir / quitar segunda imagen */
+
+    teamGroups.forEach((group, index) => {
+
+      if (index === teamIndex) {
+        group.classList.add("has-secondary");
+        group.classList.add("active");
+      } else {
+        group.classList.remove("has-secondary");
+        group.classList.remove("active");
+      }
+
     });
 
-    setTimeout(() => {
 
-        slots.forEach((img,index)=>{
-            img.src = states[currentState][index];
-        });
+    currentTeam = teamIndex;
 
-        slots.forEach(img => {
-            img.classList.remove("fade");
-        });
 
-    },400);
+    /* Entrada */
+
+    requestAnimationFrame(() => {
+      teamsSystem.classList.remove("is-changing");
+    });
+
+  }, 250);
 
 }
 
-setInterval(changeImages,3000);
+
+/* ========================================
+   BOTONES
+======================================== */
+
+teamGroups.forEach((group, index) => {
+
+  const button = group.querySelector(".team-button");
+
+  button.addEventListener("click", () => {
+
+    showTeam(index);
+
+    restartTimer();
+
+  });
+
+});
+
+
+/* ========================================
+   AUTOMÁTICO
+======================================== */
+
+let teamsTimer;
+
+function startTimer() {
+
+  teamsTimer = setInterval(() => {
+
+    let nextTeam = currentTeam + 1;
+
+    if (nextTeam > 2) {
+      nextTeam = 0;
+    }
+
+    showTeam(nextTeam);
+
+  }, 3500);
+
+}
+
+
+function restartTimer() {
+
+  clearInterval(teamsTimer);
+
+  startTimer();
+
+}
+
+
+/* ========================================
+   ESTADO INICIAL
+======================================== */
+
+showTeam(0);
+
+startTimer();
 
 </script>
 
