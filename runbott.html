@@ -1,1166 +1,286 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Runbott Portfolio | Creative Direction & Brand Experience</title>
-
-    <style>
-        :root {
-            --primary-white: #ffffff;
-            --primary-black: #000000;
-            --runbott-green: #009640;
-            --runbott-blue: #189cd9;
-            --runbott-red: #e20e17;
-            --text-main: #000000;
-            --bg-light: #f4f4f4;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.35;
-            color: var(--text-main);
-            background-color: var(--primary-white);
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* =====================================================
-           HEADER / HERO
-        ===================================================== */
-
-        header {
-            position: relative;
-            background: var(--primary-black);
-            color: var(--primary-white);
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .header-image {
-            width: 100%;
-        }
-
-        .header-image img {
-            width: 100%;
-            height: auto;
-        }
-
-        .header-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .header-logo {
-            width: 135px;
-            max-width: 25vw;
-            margin-bottom: 18px;
-        }
-
-        .header-content p {
-            margin: 0;
-            font-size: 11px;
-            letter-spacing: .5px;
-        }
-
-        /* =====================================================
-           HERO INTRO
-        ===================================================== */
-
-        .hero {
-            padding: 35px 5% 25px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            margin: 0 auto 15px;
-            max-width: 1000px;
-            font-size: clamp(1.15rem, 2.2vw, 1.8rem);
-            line-height: 1.1;
-            letter-spacing: -.5px;
-        }
-
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: .75rem;
-            line-height: 1.4;
-            font-weight: 400;
-        }
-
-        /* =====================================================
-           CONTAINER / SECTIONS
-        ===================================================== */
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section {
-            margin-bottom: 75px;
-        }
-
-        h2 {
-            margin: 0 0 12px;
-            font-size: 1rem;
-            line-height: 1.1;
-            font-weight: 700;
-        }
-
-        .section-description {
-            max-width: 950px;
-            margin: 0 0 24px;
-            font-size: .68rem;
-            line-height: 1.35;
-        }
-
-        /* =====================================================
-           COMMON GRID
-        ===================================================== */
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        /* =====================================================
-           PROJECT CARDS
-        ===================================================== */
-
-        .card {
-            position: relative;
-            background: var(--primary-white);
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .card-image {
-            width: 100%;
-            overflow: hidden;
-            background: #eee;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: auto;
-            transition: transform .45s ease;
-        }
-
-        .card:hover .card-image img {
-            transform: scale(1.025);
-        }
-
-        .card-content {
-            padding: 8px 0 0;
-        }
-
-        .card-content h3 {
-            margin: 0;
-            font-size: .7rem;
-            line-height: 1.2;
-            font-weight: 700;
-        }
-
-        .card-content p {
-            margin: 3px 0 0;
-            font-size: .58rem;
-            line-height: 1.25;
-        }
-
-        /* =====================================================
-           BLACK LABELS
-        ===================================================== */
-
-        .label-wrap {
-            text-align: center;
-            margin-top: -1px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .label {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 125px;
-            min-height: 20px;
-            padding: 3px 15px;
-            background: #000;
-            color: #fff;
-            font-size: .55rem;
-            line-height: 1;
-            font-weight: 700;
-            clip-path: polygon(0 0, 100% 0, 91% 100%, 9% 100%);
-        }
-
-        .label.light {
-            background: #fff;
-            color: #000;
-            border: 1px solid #000;
-        }
-
-        /* =====================================================
-           EQUIPOS OFICIALES
-        ===================================================== */
-
-        .teams-grid {
-            display: grid;
-            grid-template-columns: 1.45fr 1fr 1fr;
-            gap: 10px;
-            align-items: end;
-        }
-
-        .team-card {
-            min-width: 0;
-        }
-
-        .team-images {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 7px;
-        }
-
-        .team-card:first-child .team-images {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        .team-image {
-            overflow: hidden;
-            border-radius: 8px;
-            background: #eee;
-        }
-
-        .team-image img {
-            width: 100%;
-            height: 185px;
-            object-fit: cover;
-            transition: transform .45s ease;
-        }
-
-        .team-image:hover img {
-            transform: scale(1.025);
-        }
-
-        .team-label {
-            text-align: center;
-            margin-top: -1px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* =====================================================
-           PRODUCTOS RUNBOTT
-        ===================================================== */
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 90px;
-            width: 72%;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            text-align: center;
-        }
-
-        .product-image {
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .product-image img {
-            transition: transform .45s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.025);
-        }
-
-        /* =====================================================
-           ISOTÓNICOS
-        ===================================================== */
-
-        .isotonic-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.25fr;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .isotonic-image {
-            overflow: hidden;
-            border-radius: 8px;
-            background: var(--runbott-green);
-        }
-
-        .isotonic-image img {
-            width: 100%;
-            height: auto;
-        }
-
-        .isotonic-placeholder {
-            min-height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: .75rem;
-            font-weight: 600;
-        }
-
-        .isotonic-copy p {
-            max-width: 560px;
-            font-size: .68rem;
-            line-height: 1.4;
-            margin: 0 0 15px;
-        }
-
-        /* =====================================================
-           BRAND MANUAL
-        ===================================================== */
-
-        .brand-manual {
-            background: var(--primary-white);
-            padding: 0;
-            color: #000;
-            border-radius: 0;
-        }
-
-        .manual-layout {
-            display: grid;
-            grid-template-columns: .9fr 1.1fr;
-            gap: 45px;
-            align-items: center;
-        }
-
-        .manual-copy p {
-            max-width: 430px;
-            font-size: .68rem;
-            line-height: 1.4;
-            margin: 0 0 15px;
-        }
-
-        .manual-image {
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .manual-image img {
-            transition: transform .45s ease;
-        }
-
-        .manual-image:hover img {
-            transform: scale(1.02);
-        }
-
-        /* =====================================================
-           REFILL
-        ===================================================== */
-
-        .refill-gallery {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            align-items: center;
-        }
-
-        .refill-image {
-            overflow: hidden;
-            border-radius: 4px;
-        }
-
-        .refill-image img {
-            width: 100%;
-            height: 105px;
-            object-fit: cover;
-            transition: transform .45s ease;
-        }
-
-        .refill-image:hover img {
-            transform: scale(1.035);
-        }
-
-        .refill-image.main img {
-            height: 185px;
-        }
-
-        .refill-more {
-            text-align: center;
-            margin-top: -1px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* =====================================================
-           OTROS CONCEPTOS
-        ===================================================== */
-
-        .concepts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 45px;
-        }
-
-        .concept-card {
-            cursor: pointer;
-        }
-
-        .concept-title {
-            margin-bottom: 8px;
-        }
-
-        .concept-title h3 {
-            margin: 0;
-            font-size: .7rem;
-            line-height: 1.1;
-            font-weight: 700;
-        }
-
-        .concept-title p {
-            margin: 3px 0 0;
-            font-size: .55rem;
-            line-height: 1.2;
-        }
-
-        .concept-image {
-            overflow: hidden;
-        }
-
-        .concept-image img {
-            transition: transform .45s ease;
-        }
-
-        .concept-card:hover .concept-image img {
-            transform: scale(1.025);
-        }
-
-        /* =====================================================
-           BUTTON
-        ===================================================== */
-
-        .button-wrap {
-            margin-top: 15px;
-        }
-
-        /* =====================================================
-           PDF VIEWER
-        ===================================================== */
-
-        .pdf-viewer {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0,0,0,.94);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity .25s ease, visibility .25s ease;
-        }
-
-        .pdf-viewer.open {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .pdf-frame {
-            width: min(1200px, 95vw);
-            height: 92vh;
-            border: 0;
-            background: white;
-        }
-
-        .pdf-close {
-            position: absolute;
-            top: 18px;
-            right: 25px;
-            border: 0;
-            background: transparent;
-            color: white;
-            font-family: inherit;
-            font-size: 11px;
-            cursor: pointer;
-        }
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            text-align: center;
-            padding: 35px 20px 55px;
-            font-size: .6rem;
-            color: #777;
-        }
-
-        /* =====================================================
-           RESPONSIVE
-        ===================================================== */
-
-        @media (max-width: 768px) {
-
-            .header-logo {
-                width: 105px;
-            }
-
-            .header-content p {
-                font-size: 9px;
-            }
-
-            .hero {
-                padding-top: 28px;
-            }
-
-            .hero p,
-            .section-description,
-            .isotonic-copy p,
-            .manual-copy p {
-                font-size: .65rem;
-            }
-
-            .grid,
-            .teams-grid,
-            .products-grid,
-            .isotonic-layout,
-            .manual-layout,
-            .concepts-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .products-grid {
-                width: 82%;
-                gap: 35px;
-            }
-
-            .team-card:first-child .team-images {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .team-image img {
-                height: auto;
-            }
-
-            .refill-gallery {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 4px;
-            }
-
-            .refill-image img {
-                height: 70px;
-            }
-
-            .refill-image.main img {
-                height: 120px;
-            }
-
-            .concepts-grid {
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-
-            .header-logo {
-                width: 85px;
-            }
-
-            .header-content p {
-                font-size: 8px;
-            }
-
-            .hero h1 {
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: .9rem;
-            }
-
-            .section-description,
-            .hero p,
-            .isotonic-copy p,
-            .manual-copy p {
-                font-size: .6rem;
-            }
-
-            .products-grid {
-                width: 100%;
-            }
-
-            .label {
-                min-width: 105px;
-                font-size: .5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Runbott Portfolio</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff;
+    color:#111;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    height:100vh;
+    background:url("assets/images/runbott-home.jpg") center center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.30);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    color:white;
+}
+
+.hero h1{
+    font-size:clamp(3rem,8vw,7rem);
+    letter-spacing:8px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    opacity:.9;
+}
+
+.scroll-indicator{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    color:white;
+    font-size:.9rem;
+    z-index:2;
+    animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+    0%,20%,50%,80%,100%{
+        transform:translateX(-50%) translateY(0);
+    }
+    40%{
+        transform:translateX(-50%) translateY(-10px);
+    }
+    60%{
+        transform:translateX(-50%) translateY(-5px);
+    }
+}
+
+/* =========================
+   EQUIPOS
+========================= */
+
+.teams-section{
+    padding:120px 5%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:20px;
+    letter-spacing:4px;
+}
+
+.section-description{
+    text-align:center;
+    color:#666;
+    max-width:700px;
+    margin:0 auto 80px;
+}
+
+.teams-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.card{
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.card img{
+    width:100%;
+    height:650px;
+    object-fit:cover;
+    display:block;
+    transition:all .8s ease;
+}
+
+.fade{
+    opacity:0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .teams-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .card img{
+        height:450px;
+    }
+}
+
+@media(max-width:768px){
+
+    .hero h1{
+        letter-spacing:3px;
+    }
+
+    .teams-grid{
+        grid-template-columns:1fr;
+    }
+
+    .card img{
+        height:400px;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-<header>
+<!-- HERO -->
 
-    <div class="header-image">
-        <img src="assets/images/runbott-home.jpg" alt="Runbott">
+<header class="hero">
+
+    <div class="hero-content">
+        <h1>RUNBOTT</h1>
+        <p>Portfolio de proyectos y colaboraciones</p>
     </div>
 
-    <div class="header-content">
-        <img
-            src="assets/images/logo-runbott.svg"
-            alt="Runbott"
-            class="header-logo"
-        >
+    <div class="scroll-indicator">
+        ↓ Scroll
     </div>
 
 </header>
 
+<!-- EQUIPOS -->
 
-<div class="hero">
-    <h1>Creative Direction + Brand Experience + Campaign Design + Digital Experience</h1>
+<section class="teams-section">
 
-    <p>
-        Dirección visual de la marca a través del desarrollo de campañas de lanzamiento,
-        contenido de producto, fotografía, redes sociales y experiencias digitales,
-        garantizando una identidad coherente en todos los puntos de contacto.
+    <h2 class="section-title">EQUIPOS OFICIALES</h2>
+
+    <p class="section-description">
+        Colección oficial desarrollada para Real Madrid, FC Barcelona y Atlético de Madrid.
     </p>
-</div>
 
+    <div class="teams-grid">
 
-<main class="container">
-
-
-    <!-- =====================================================
-         EQUIPOS OFICIALES
-    ====================================================== -->
-
-    <section id="official-teams">
-
-        <h2>Equipos Oficiales</h2>
-
-        <p class="section-description">
-            Desarrollo de producto y dirección visual para colaboraciones oficiales con equipos deportivos como Real Madrid,
-            FC Barcelona y Atlético de Madrid, entre otros. Desde el diseño gráfico aplicado a las botellas hasta la creación
-            de contenido de producto, redes sociales y recursos digitales para web, construyendo una experiencia de marca
-            coherente en cada punto de contacto.
-        </p>
-
-
-        <div class="teams-grid">
-
-            <article class="team-card">
-
-                <div class="team-images">
-
-                    <a href="#" class="team-image">
-                        <img
-                            src="assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg"
-                            alt="Real Madrid x Runbott"
-                        >
-                    </a>
-
-                    <a href="#" class="team-image">
-                        <img
-                            src="assets/images/REAL-MADRID-2.jpg"
-                            alt="Real Madrid x Runbott"
-                        >
-                    </a>
-
-                </div>
-
-                <div class="team-label">
-                    <span class="label">Real Madrid</span>
-                </div>
-
-            </article>
-
-
-            <article class="team-card">
-
-                <div class="team-images">
-
-                    <a href="#" class="team-image">
-                        <img
-                            src="assets/images/BANNER-FCB-TEXTURE-03.jpg"
-                            alt="FC Barcelona x Runbott"
-                        >
-                    </a>
-
-                </div>
-
-                <div class="team-label">
-                    <span class="label">FC Barcelona</span>
-                </div>
-
-            </article>
-
-
-            <article class="team-card">
-
-                <div class="team-images">
-
-                    <a href="#" class="team-image">
-                        <img
-                            src="assets/images/BANNER-ATM-TEXTURE-03.jpg"
-                            alt="Atlético de Madrid x Runbott"
-                        >
-                    </a>
-
-                </div>
-
-                <div class="team-label">
-                    <span class="label">Atlético de Madrid</span>
-                </div>
-
-            </article>
-
+        <div class="card">
+            <img id=mages/STORY-1-REAL_MADRID-TEXTURE.jpg
         </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         PRODUCTOS RUNBOTT
-    ====================================================== -->
-
-    <section id="products">
-
-        <h2>Productos Runbott</h2>
-
-        <p class="section-description">
-            Dirección visual y desarrollo de nuevos productos Runbott, trabajando desde la propuesta gráfica y el packaging
-            hasta la creación de su universo de comunicación. Fotografía de estudio y de ambiente, contenido para redes sociales
-            y email marketing completan una experiencia de producto coherente.
-        </p>
-
-
-        <div class="products-grid">
-
-            <a href="#" class="product-card">
-
-                <div class="product-image">
-                    <img
-                        src="assets/images/IMG_0290-2.jpg"
-                        alt="Runbott Siip"
-                    >
-                </div>
-
-                <div class="label-wrap">
-                    <span class="label">Runbott Siip</span>
-                </div>
-
-            </a>
-
-
-            <a href="#" class="product-card">
-
-                <div class="product-image">
-                    <img
-                        src="assets/images/TOTEBAG-Post3.jpg"
-                        alt="Runbott ToteBag"
-                    >
-                </div>
-
-                <div class="label-wrap">
-                    <span class="label">Runbott ToteBag</span>
-                </div>
-
-            </a>
-
+        <div class="card">
+            assets/images/REAL-MADRID-2.jpg
         </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         RUNBOTT ISOTÓNICOS
-    ====================================================== -->
-
-    <section id="isotonic">
-
-        <div class="isotonic-layout">
-
-            <div class="isotonic-image">
-
-                <!--
-                    No se ha proporcionado todavía una ruta
-                    para la imagen de Isotonic Drink.
-                    Sustituir este bloque por la imagen cuando
-                    tengas el archivo.
-                -->
-
-                <div class="isotonic-placeholder">
-                    Isotonic Drink
-                </div>
-
-            </div>
-
-
-            <div class="isotonic-copy">
-
-                <h2>Runbott Isotónicos</h2>
-
-                <p>
-                    Desarrollo y lanzamiento de una nueva línea de sobres isotónicos de alta calidad,
-                    diseñada específicamente para el público deportivo. El proyecto abarca desde el
-                    diseño de packaging y los propios sobres hasta la definición de la estrategia de
-                    lanzamiento, análisis y comparativa con la competencia, y desarrollo de los diferentes
-                    puntos de contacto de la marca: fotografía de producto y de ambiente, web, email
-                    marketing, blog y contenido para redes sociales.
-                </p>
-
-                <span class="label">Isotonic Drink</span>
-
-            </div>
-
+        <div class="card">
+            assets/images/BANNER-FCB-TEXTURE-03.jpg
         </div>
 
-    </section>
-
-
-    <!-- =====================================================
-         BRAND MANUAL
-    ====================================================== -->
-
-    <section class="brand-manual" id="brand-manual">
-
-        <div class="manual-layout">
-
-            <div class="manual-copy">
-
-                <h2>Brand Manual</h2>
-
-                <p>
-                    Desarrollo y sistematización de la identidad visual de Runbott a través de un
-                    Brand Manual integral. El proyecto abarca la definición del sistema visual,
-                    tono y personalidad de la comunicación, dirección de fotografía y criterios de
-                    dirección de arte, así como las diferentes aplicaciones de marca. Un documento
-                    diseñado para establecer una visión coherente y escalable de Runbott en todos
-                    sus canales, soportes y puntos de contacto.
-                </p>
-
-                <a
-                    href="#"
-                    class="label light pdf-trigger"
-                    data-pdf=""
-                >
-                    Ver completo
-                </a>
-
-            </div>
-
-
-            <div class="manual-image">
-
-                <img
-                    src="assets/images/Brand-photo.png"
-                    alt="Runbott Brand Manual"
-                >
-
-            </div>
-
+        <div class="card">
+            assets/images/BANNER-ATM-TEXTURE-03.jpg
         </div>
 
-    </section>
+    </div>
 
-
-    <!-- =====================================================
-         RUNBOTT REFILL
-    ====================================================== -->
-
-    <section id="refill">
-
-        <h2>Runbott Refill</h2>
-
-        <p class="section-description">
-            Desarrollo integral del sistema visual y la experiencia de marca para Runbott Refill, un nuevo modelo de ósmosis
-            doméstica basado en suscripción. Manteniendo el lenguaje visual de Runbott, se creó una identidad adaptada al nuevo
-            servicio y un ecosistema de comunicación coherente para todos sus puntos de contacto, desde el producto y el packaging
-            hasta los entornos digitales, comerciales y físicos.
-        </p>
-
-
-        <div class="refill-gallery">
-
-            <div class="refill-image">
-                <img
-                    src="assets/images/2-Runbott-refill-2.jpg"
-                    alt="Runbott Refill"
-                >
-            </div>
-
-            <div class="refill-image">
-                <img
-                    src="assets/images/3-Runbott-refill-2.jpg"
-                    alt="Runbott Refill"
-                >
-            </div>
-
-            <div class="refill-image main pdf-trigger" data-pdf="">
-                <img
-                    src="assets/images/4-Runbott-refill-2.jpg"
-                    alt="Runbott Refill"
-                >
-            </div>
-
-            <div class="refill-image">
-                <img
-                    src="assets/images/5-Runbott-refill-2.jpg"
-                    alt="Runbott Refill"
-                >
-            </div>
-
-            <div class="refill-image">
-                <img
-                    src="assets/images/6-Runbott-refill-2.jpg"
-                    alt="Runbott Refill"
-                >
-            </div>
-
-        </div>
-
-
-        <div class="refill-more">
-            <a href="#" class="label">
-                Ver más
-            </a>
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         OTROS CONCEPTOS
-    ====================================================== -->
-
-    <section id="concepts">
-
-        <h2>Otros conceptos</h2>
-
-        <p class="section-description">
-            Exploración de diferentes territorios creativos dentro del universo Runbott a través de conceptos de producto,
-            colaboraciones y propuestas visuales. Una selección de proyectos que amplían las posibilidades de la marca
-            mediante nuevas estéticas, referencias culturales y universos gráficos.
-        </p>
-
-
-        <div class="concepts-grid">
-
-
-            <article
-                class="concept-card pdf-trigger"
-                data-pdf=""
-            >
-
-                <div class="concept-title">
-                    <h3>Mickey</h3>
-                    <p>Concept Collection</p>
-                </div>
-
-                <div class="concept-image">
-                    <img
-                        src="assets/images/mikey.png"
-                        alt="Mickey"
-                    >
-                </div>
-
-            </article>
-
-
-            <article
-                class="concept-card pdf-trigger"
-                data-pdf=""
-            >
-
-                <div class="concept-title">
-                    <h3>ColaCao x Runbott</h3>
-                    <p>Collaboration Concept</p>
-                </div>
-
-                <div class="concept-image">
-                    <img
-                        src="assets/images/colacao.png"
-                        alt="ColaCao x Runbott"
-                    >
-                </div>
-
-            </article>
-
-
-            <article
-                class="concept-card pdf-trigger"
-                data-pdf=""
-            >
-
-                <div class="concept-title">
-                    <h3>Mythos</h3>
-                    <p>Concept Collection</p>
-                </div>
-
-                <div class="concept-image">
-                    <img
-                        src="assets/images/mythos.png"
-                        alt="Mythos"
-                    >
-                </div>
-
-            </article>
-
-
-        </div>
-
-    </section>
-
-</main>
-
-
-<!-- =========================================================
-     PDF VIEWER
-========================================================== -->
-
-<div
-    class="pdf-viewer"
-    id="pdfViewer"
-    aria-hidden="true"
->
-
-    <button
-        class="pdf-close"
-        id="pdfClose"
-        aria-label="Cerrar"
-    >
-        Cerrar ×
-    </button>
-
-    <iframe
-        class="pdf-frame"
-        id="pdfFrame"
-        title="Documento PDF"
-    ></iframe>
-
-</div>
-
-
-<footer>
-    <p>© 2026 Kevin Moran — Runbott</p>
-</footer>
-
+</section>
 
 <script>
 
-    /* =========================================================
-       PDF VIEWER
-    ========================================================= */
+const states = [
 
-    const pdfViewer = document.getElementById("pdfViewer");
-    const pdfFrame = document.getElementById("pdfFrame");
-    const pdfClose = document.getElementById("pdfClose");
+[
+"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
+"assets/images/REAL-MADRID-2.jpg",
+"assets/images/BANNER-FCB-TEXTURE-03.jpg",
+"assets/images/BANNER-ATM-TEXTURE-03.jpg"
+],
 
-    function openPDF(pdf) {
+[
+"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
+"assets/images/BANNER-FCB-TEXTURE-03.jpg",
+"assets/images/runbott-fcb-2.jpg",
+"assets/images/BANNER-ATM-TEXTURE-03.jpg"
+],
 
-        if (!pdf) {
-            return;
-        }
+[
+"assets/images/STORY-1-REAL_MADRID-TEXTURE.jpg",
+"assets/images/BANNER-FCB-TEXTURE-03.jpg",
+"assets/images/BANNER-ATM-TEXTURE-03.jpg",
+"assets/images/BANNER-ATM-TEXTURE-VOLT.jpg"
+]
 
-        pdfFrame.src = pdf;
+];
 
-        pdfViewer.classList.add("open");
-        pdfViewer.setAttribute("aria-hidden", "false");
+let currentState = 0;
 
-        document.body.style.overflow = "hidden";
+const slots = [
+
+document.getElementById("img1"),
+document.getElementById("img2"),
+document.getElementById("img3"),
+document.getElementById("img4")
+
+];
+
+function changeImages(){
+
+    currentState++;
+
+    if(currentState >= states.length){
+        currentState = 0;
     }
 
-    function closePDF() {
+    slots.forEach(img => {
+        img.classList.add("fade");
+    });
 
-        pdfViewer.classList.remove("open");
-        pdfViewer.setAttribute("aria-hidden", "true");
+    setTimeout(() => {
 
-        pdfFrame.src = "";
-
-        document.body.style.overflow = "";
-    }
-
-    document.querySelectorAll(".pdf-trigger").forEach(trigger => {
-
-        trigger.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            const pdf = trigger.dataset.pdf;
-
-            openPDF(pdf);
-
+        slots.forEach((img,index)=>{
+            img.src = states[currentState][index];
         });
 
-    });
-
-    pdfClose.addEventListener("click", closePDF);
-
-    pdfViewer.addEventListener("click", event => {
-
-        if (event.target === pdfViewer) {
-            closePDF();
-        }
-
-    });
-
-    document.addEventListener("keydown", event => {
-
-        if (
-            event.key === "Escape" &&
-            pdfViewer.classList.contains("open")
-        ) {
-            closePDF();
-        }
-
-    });
-
-
-    /* =========================================================
-       EMPTY LINKS
-    ========================================================= */
-
-    document.querySelectorAll('a[href="#"]').forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            if (!link.classList.contains("pdf-trigger")) {
-                event.preventDefault();
-            }
-
+        slots.forEach(img => {
+            img.classList.remove("fade");
         });
 
-    });
+    },400);
+
+}
+
+setInterval(changeImages,3000);
 
 </script>
 
