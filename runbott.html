@@ -113,9 +113,17 @@ body{
     }
 
 }
+
 /* ========================================
    EQUIPOS OFICIALES
 ======================================== */
+
+.official-teams {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .official-teams h2 {
   font-size: 20px;
@@ -132,35 +140,31 @@ body{
   max-width: 100%;
 }
 
-.official-teams {
-  width: 90%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
 /* ========================================
-   GRID PRINCIPAL
+   ACORDEÓN EQUIPOS
 ======================================== */
 
 .teams-system {
   width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  align-items: flex-start;
 
   gap: 8px;
-
-  align-items: start;
 }
 
 
 /* ========================================
-   CADA EQUIPO
+   EQUIPO
 ======================================== */
 
 .team-group {
+  /*
+    Todos parten del mismo tamaño.
+    El activo ocupa el doble.
+  */
+  flex: 1 1 0;
+
   min-width: 0;
 
   display: flex;
@@ -169,63 +173,15 @@ body{
   gap: 12px;
 
   transition:
-    opacity 0.5s ease,
-    transform 0.6s cubic-bezier(.22,.61,.36,1);
+    flex-grow 0.75s cubic-bezier(.22,.61,.36,1),
+    flex-basis 0.75s cubic-bezier(.22,.61,.36,1);
 }
 
 
-/* ========================================
-   DISTRIBUCIÓN
-======================================== */
+/* EQUIPO ACTIVO */
 
-/* REAL MADRID ACTIVO */
-
-.team-group[data-team="0"] {
-  grid-column: span 2;
-}
-
-
-/* FC BARCELONA */
-
-.team-group[data-team="1"] {
-  grid-column: span 1;
-}
-
-
-/* ATLÉTICO */
-
-.team-group[data-team="2"] {
-  grid-column: span 1;
-}
-
-
-/* FC BARCELONA ACTIVO */
-
-.teams-system.state-fcb .team-group[data-team="0"] {
-  grid-column: span 1;
-}
-
-.teams-system.state-fcb .team-group[data-team="1"] {
-  grid-column: span 2;
-}
-
-.teams-system.state-fcb .team-group[data-team="2"] {
-  grid-column: span 1;
-}
-
-
-/* ATLÉTICO ACTIVO */
-
-.teams-system.state-atm .team-group[data-team="0"] {
-  grid-column: span 1;
-}
-
-.teams-system.state-atm .team-group[data-team="1"] {
-  grid-column: span 1;
-}
-
-.teams-system.state-atm .team-group[data-team="2"] {
-  grid-column: span 2;
+.team-group.active {
+  flex-grow: 2;
 }
 
 
@@ -235,61 +191,85 @@ body{
 
 .team-images {
   width: 100%;
+  height: 520px;
 
-  display: grid;
-  grid-template-columns: 1fr;
-
+  display: flex;
   gap: 8px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
 }
 
 
-/* TODAS LAS SECUNDARIAS OCULTAS */
-
-.team-image.secondary {
-  display: none;
-}
-
-
-/* CUANDO EL EQUIPO ESTÁ ACTIVO,
-   MOSTRAR SU SEGUNDA IMAGEN */
-
-.team-group.has-secondary .team-images {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.team-group.has-secondary .team-image.secondary {
-  display: block;
-}
-
-
-/* ========================================
-   IMAGEN
-======================================== */
+/* TODAS LAS IMÁGENES */
 
 .team-image {
+  flex: 1 1 0;
+
+  min-width: 0;
+  height: 100%;
+
   display: block;
-
-  width: 100%;
-
-  aspect-ratio: 9 / 16;
 
   overflow: hidden;
 
   border-radius: 14px;
 
-  background: #eee;
+  transition:
+    flex-grow 0.75s cubic-bezier(.22,.61,.36,1),
+    flex-basis 0.75s cubic-bezier(.22,.61,.36,1);
 }
 
 
-.team-image img {
-  display: block;
+/* ========================================
+   SEGUNDA IMAGEN
+======================================== */
 
+/*
+  Por defecto la secundaria ocupa 0.
+  Por tanto solo existe visualmente cuando
+  el equipo está activo.
+*/
+
+.team-image.secondary {
+  flex: 0 0 0;
+
+  min-width: 0;
+
+  opacity: 1;
+
+  overflow: hidden;
+}
+
+
+/*
+  Cuando el equipo está activo:
+
+  principal = 50%
+  secundaria = 50%
+*/
+
+.team-group.active .team-image {
+  flex-basis: 50%;
+}
+
+.team-group.active .team-image.secondary {
+  flex: 1 1 50%;
+}
+
+
+/* ========================================
+   IMÁGENES
+======================================== */
+
+.team-image img {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  display: block;
 
-  transition: transform 0.7s ease;
+  object-fit: cover;
 }
 
 
@@ -303,12 +283,13 @@ body{
 ======================================== */
 
 .team-button {
-  width: 82%;
-  min-height: 46px;
+  width: 235px;
+  height: 46px;
 
   margin: 0 auto;
-
   padding: 0 20px;
+
+  box-sizing: border-box;
 
   border: 0;
 
@@ -336,24 +317,16 @@ body{
     0 100%
   );
 
-  transition:
-    transform 0.25s ease,
-    opacity 0.25s ease;
+  transition: transform 0.25s ease;
 }
-
 
 .team-button:hover {
   transform: translateY(-2px);
 }
 
 
-/* ========================================
-   ANIMACIÓN
-======================================== */
-
-.teams-system.is-changing .team-group {
-  opacity: 0;
-  transform: translateY(8px);
+.team-button:hover {
+  transform: translateY(-2px);
 }
 
 
@@ -374,7 +347,9 @@ body{
   .team-button {
     width: 100%;
     min-height: 38px;
+
     padding: 0 8px;
+
     font-size: 10px;
   }
 
@@ -526,63 +501,26 @@ let currentTeam = 0;
 
 
 /* ========================================
-   MOSTRAR ESTADO
+   CAMBIAR EQUIPO
 ======================================== */
 
-function showTeam(teamIndex) {
+function showTeam(index) {
 
-  /* Animación de salida */
+  teamGroups.forEach((group, groupIndex) => {
 
-  teamsSystem.classList.add("is-changing");
+    if (groupIndex === index) {
 
+      group.classList.add("active");
 
-  setTimeout(() => {
+    } else {
 
-    /* Limpiar estado */
+      group.classList.remove("active");
 
-    teamsSystem.classList.remove(
-      "state-fcb",
-      "state-atm"
-    );
-
-
-    /* Aplicar nuevo estado */
-
-    if (teamIndex === 1) {
-      teamsSystem.classList.add("state-fcb");
     }
 
-    if (teamIndex === 2) {
-      teamsSystem.classList.add("state-atm");
-    }
+  });
 
-
-    /* Añadir / quitar segunda imagen */
-
-    teamGroups.forEach((group, index) => {
-
-      if (index === teamIndex) {
-        group.classList.add("has-secondary");
-        group.classList.add("active");
-      } else {
-        group.classList.remove("has-secondary");
-        group.classList.remove("active");
-      }
-
-    });
-
-
-    currentTeam = teamIndex;
-
-
-    /* Entrada */
-
-    requestAnimationFrame(() => {
-      teamsSystem.classList.remove("is-changing");
-    });
-
-  }, 250);
-
+  currentTeam = index;
 }
 
 
@@ -595,6 +533,8 @@ teamGroups.forEach((group, index) => {
   const button = group.querySelector(".team-button");
 
   button.addEventListener("click", () => {
+
+    if (index === currentTeam) return;
 
     showTeam(index);
 
@@ -638,7 +578,7 @@ function restartTimer() {
 
 
 /* ========================================
-   ESTADO INICIAL
+   INICIO
 ======================================== */
 
 showTeam(0);
