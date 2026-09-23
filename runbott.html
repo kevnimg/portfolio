@@ -977,7 +977,7 @@ BRAND MANUAL LIGHTBOX
 }
 
 /*=====================================================
-COVERFLOW LA CONQUESTA
+STORIES
 =====================================================*/
 .coverflow{
 
@@ -1022,6 +1022,40 @@ COVERFLOW LA CONQUESTA
 
         0 25px 50px rgba(0,0,0,.18);
 
+}
+
+.refill-button {
+  width: 235px;
+  height: 46px;
+
+  margin: 30px auto 0;
+
+  background: #000;
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+
+  clip-path: polygon(
+    8% 0,
+    100% 0,
+    92% 100%,
+    0 100%
+  );
+
+  transition: transform .25s ease;
+}
+
+.refill-button:hover {
+  transform: translateY(-2px);
 }
 
 /*====================================
@@ -1094,6 +1128,7 @@ OTROS CONCEPTOS
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
 }
 
 .other-concepts-section h2 {
@@ -1651,11 +1686,17 @@ packaging hasta los entornos digitales, comerciales y físicos.
         </div>
 
     </div>
-    
 
 </div>
 
-</div>
+ <a
+  href="AQUI-LINK-GOOGLE-SITES-REFILL"
+  class="refill-button"
+  target="_blank"
+  rel="noopener"
+>
+  Ver mas de refill
+</a>
 
 </section>
 
@@ -2087,7 +2128,82 @@ function startProgress(){
 
 }
 
+
+
+/* ===========================================================
+OTROS CONCEPTOS — PDF VIEWER
+=========================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const conceptButtons = document.querySelectorAll(".concept-image-button");
+
+  const lightbox = document.getElementById("concept-pdf-lightbox");
+  const pdfViewer = document.getElementById("concept-pdf");
+  const closeButton = document.getElementById("concept-pdf-close");
+
+
+  function openPDF(pdfPath) {
+
+    pdfViewer.src = pdfPath;
+
+    lightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+  }
+
+
+  function closePDF() {
+
+    lightbox.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      pdfViewer.src = "";
+    }, 350);
+  }
+
+
+  conceptButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const pdfPath = button.dataset.pdf;
+
+      openPDF(pdfPath);
+
+    });
+
+  });
+
+
+  closeButton.addEventListener("click", closePDF);
+
+
+  lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+      closePDF();
+    }
+
+  });
+
+
+  document.addEventListener("keydown", event => {
+
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+      closePDF();
+    }
+
+  });
+
+});
+
 </script>
+
 
 </body>
 </html>
