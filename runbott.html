@@ -1085,6 +1085,217 @@ STORIES INDICATOR
 
 }
 
+/* ===========================================================
+OTROS CONCEPTOS
+=========================================================== */
+
+.other-concepts-section {
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.other-concepts-section h2 {
+  margin: 0 0 28px;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.other-concepts-description {
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+
+/* ===========================================================
+CONCEPTOS
+=========================================================== */
+
+.concepts-grid {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 60px;
+
+  margin-top: 58px;
+}
+
+.concept-card {
+  min-width: 0;
+}
+
+.concept-card h3 {
+  margin: 0 0 14px;
+
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.concept-card p {
+  margin: 0 0 14px;
+
+  font-size: 16px;
+  line-height: 1.2;
+  font-style: italic;
+  font-weight: 400;
+}
+
+
+/* ===========================================================
+IMÁGENES
+=========================================================== */
+
+.concept-image-button {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  background: none;
+
+  display: block;
+
+  cursor: pointer;
+
+  text-align: left;
+}
+
+.concept-image-button img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease;
+}
+
+.concept-image-button:hover img {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(0,0,0,.14);
+}
+
+
+/* ===========================================================
+PDF LIGHTBOX
+=========================================================== */
+
+#concept-pdf-lightbox {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0,0,0,.72);
+
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .35s ease;
+
+  z-index: 99999;
+}
+
+#concept-pdf-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.concept-pdf-viewer {
+  width: 90vw;
+  height: 90vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#concept-pdf {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+
+  background: #fff;
+
+  border-radius: 10px;
+
+  transform: scale(.92);
+
+  transition: .35s ease;
+}
+
+#concept-pdf-lightbox.open #concept-pdf {
+  transform: scale(1);
+}
+
+
+/* ===========================================================
+CERRAR
+=========================================================== */
+
+#concept-pdf-close {
+  position: absolute;
+
+  top: 25px;
+  right: 35px;
+
+  border: none;
+  background: none;
+
+  color: white;
+
+  font-size: 46px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+
+/* ===========================================================
+RESPONSIVE
+=========================================================== */
+
+@media (max-width: 800px) {
+
+  .concepts-grid {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+}
+
+
 </style>
 </head>
 
@@ -1447,6 +1658,117 @@ packaging hasta los entornos digitales, comerciales y físicos.
 </div>
 
 </section>
+
+<!-- ===========================================================
+OTROS CONCEPTOS
+=========================================================== -->
+
+<section id="otros-conceptos" class="other-concepts-section">
+
+  <h2>Otros conceptos</h2>
+
+  <p class="other-concepts-description">
+    Exploración de diferentes territorios creativos dentro del universo Runbott a través de conceptos de producto, colaboraciones y propuestas visuales. Una selección de proyectos que amplían las posibilidades de la marca mediante nuevas estéticas, referencias culturales y universos gráficos.
+  </p>
+
+
+  <div class="concepts-grid">
+
+    <!-- MICKEY -->
+
+    <div class="concept-card">
+
+      <h3>Mickey</h3>
+
+      <p>Concept Collection</p>
+
+      <button
+        class="concept-image-button"
+        data-pdf="assets/pdf/MICKEY-MOUSE.pdf"
+        aria-label="Abrir proyecto Mickey"
+      >
+        <img
+          src="assets/images/mikey.png"
+          alt="Mickey — Concept Collection"
+        >
+      </button>
+
+    </div>
+
+
+    <!-- COLACAO -->
+
+    <div class="concept-card">
+
+      <h3>ColaCao x Runbott</h3>
+
+      <p>Collaboration Concept</p>
+
+      <button
+        class="concept-image-button"
+        data-pdf="assets/pdf/COLACAO-RUNBOTT.pdf"
+        aria-label="Abrir proyecto ColaCao x Runbott"
+      >
+        <img
+          src="assets/images/colacao.png"
+          alt="ColaCao x Runbott — Collaboration Concept"
+        >
+      </button>
+
+    </div>
+
+
+    <!-- MYTHOS -->
+
+    <div class="concept-card">
+
+      <h3>Mythos</h3>
+
+      <p>Concept Collection</p>
+
+      <button
+        class="concept-image-button"
+        data-pdf="assets/pdf/RUNBOTT_MYTHOS_PLANT-311024.pdf"
+        aria-label="Abrir proyecto Mythos"
+      >
+        <img
+          src="assets/images/mythos.png"
+          alt="Mythos — Concept Collection"
+        >
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ===========================================================
+PDF VIEWER
+=========================================================== -->
+
+<div id="concept-pdf-lightbox">
+
+  <button
+    id="concept-pdf-close"
+    aria-label="Cerrar PDF"
+  >
+    &times;
+  </button>
+
+  <div class="concept-pdf-viewer">
+
+    <iframe
+      id="concept-pdf"
+      src=""
+      title="Proyecto Runbott"
+    ></iframe>
+
+  </div>
+
+</div>
+
 
 <script>
 
