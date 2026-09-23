@@ -553,6 +553,7 @@ body{
 
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 100px;
 }
 
 
@@ -727,138 +728,77 @@ body{
 
 }
 
-/*=====================================================
+/* ===========================================================
 BRAND MANUAL
-=====================================================*/
+=========================================================== */
 
 .brand-manual-section {
-
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
 
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+
+  align-items: start;
 }
 
 
-.brand-manual-content {
-
-  width: 100%;
-
-  display: flex;
-
-  align-items: flex-start;
-
-  justify-content: flex-start;
-
-  gap: 32px;
-}
-
-
-/* IMAGEN */
-
-.brand-manual-image {
-
-  flex: 0 0 300px;
-
-  width: 300px;
-  aspect-ratio: 4 / 5;
-
-  overflow: hidden;
-
-  border-radius: 14px;
-}
-
-
-.brand-manual-image img {
-
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  transition: transform .5s ease;
-}
-
-
-.brand-manual-image:hover img {
-
-  transform: scale(1.025);
-
-}
-
-
-/* INFORMACIÓN */
+/* ===========================================================
+TEXTO
+=========================================================== */
 
 .brand-manual-info {
+  grid-column: 1;
+  grid-row: 1;
 
-  flex: 1;
-
-  width: auto;
-
-  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-
 .brand-manual-info h2 {
-
   margin: 0 0 28px;
 
   font-size: 20px;
-
   line-height: 1;
-
   font-weight: 700;
-
-  letter-spacing: -.025em;
+  letter-spacing: -0.025em;
 }
 
-
 .brand-manual-info p {
-
+  width: 100%;
   margin: 0;
 
-  width: 100%;
-
   font-size: 16px;
-
   line-height: 1.25;
-
   font-weight: 400;
 }
 
 
-/* BOTÓN */
+/* ===========================================================
+BOTÓN
+=========================================================== */
 
 .brand-manual-button {
+  width: 195px;
+  height: 31px;
 
-  width: 235px;
-  height: 46px;
+  margin-top: 28px;
+  padding: 0;
 
-  margin-top: 34px;
-
-  box-sizing: border-box;
-
-  border: none;
-
-  background: #000;
-
-  color: #fff;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   font-family: inherit;
-
   font-size: 16px;
-
   line-height: 1;
-
   font-weight: 700;
 
   cursor: pointer;
@@ -873,10 +813,59 @@ BRAND MANUAL
   transition: transform .25s ease;
 }
 
-
 .brand-manual-button:hover {
-
   transform: translateY(-2px);
+}
+
+
+/* ===========================================================
+IMAGEN BRAND MANUAL
+=========================================================== */
+
+.brand-manual-image {
+  grid-column: 2;
+  grid-row: 1;
+
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  display: block;
+}
+
+.brand-manual-image img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  object-fit: contain;
+}
+
+
+/* ===========================================================
+RESPONSIVE
+=========================================================== */
+
+@media (max-width: 800px) {
+
+  .brand-manual-section {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+
+  .brand-manual-info {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .brand-manual-image {
+    grid-column: 1;
+    grid-row: 2;
+  }
 
 }
 
@@ -1225,32 +1214,29 @@ BRAND MANUAL LIGHTBOX
 
 <section id="brand-manual" class="brand-manual-section">
 
-  <div class="brand-manual-content">
+  <div class="brand-manual-info">
 
-    <div class="brand-manual-image">
-      <img
-        src="assets/images/Brand-photo.png"
-        alt="Runbott Brand Manual"
-      >
-    </div>
+    <h2>Brand Manual</h2>
 
-    <div class="brand-manual-info">
+    <p>
+      Desarrollo y sistematización de la identidad visual de Runbott a través de un Brand Manual integral. El proyecto abarca la definición del sistema visual, tono y personalidad de la comunicación, dirección de fotografía y criterios de dirección de arte, así como las diferentes aplicaciones de marca. Un documento diseñado para establecer una visión coherente y escalable de Runbott en todos sus canales, soportes y puntos de contacto.
+    </p>
 
-      <h2>Brand Manual</h2>
-
-      <p>
-        Desarrollo y sistematización de la identidad visual de Runbott a través de un Brand Manual integral. El proyecto abarca la definición del sistema visual, tono y personalidad de la comunicación, dirección de fotografía y criterios de dirección de arte, así como las diferentes aplicaciones de marca. Un documento diseñado para establecer una visión coherente y escalable de Runbott en todos sus canales, soportes y puntos de contacto.
-      </p>
-
-      <button id="brand-manual-open" class="brand-manual-button">
-        Ver completo
-      </button>
-
-    </div>
+    <button id="brand-manual-open" class="brand-manual-button">
+      Ver completo
+    </button>
 
   </div>
 
+  <div class="brand-manual-image">
+    <img
+      src="assets/images/Brand-photo.png"
+      alt="Runbott Brand Manual"
+    >
+  </div>
+
 </section>
+
 <!-- ==========================================================
 BRAND MANUAL PDF VIEWER
 =========================================================== -->
@@ -1387,7 +1373,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const pdfPath =
-    "assets/pdf/runbott-brand-manual.pdf";
+    "assets/pdfs/Brand_Manual-220626.pdf";
 
 
   /* ABRIR */
