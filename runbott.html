@@ -976,6 +976,115 @@ BRAND MANUAL LIGHTBOX
   z-index: 2;
 }
 
+/*=====================================================
+COVERFLOW LA CONQUESTA
+=====================================================*/
+.coverflow{
+
+    position:relative;
+
+    width:100%;
+
+    height:700px;
+
+    overflow:hidden;
+
+}
+
+.story{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform-style:preserve-3d;
+
+    transition:
+
+        transform .8s cubic-bezier(.22,.61,.36,1),
+        opacity .8s,
+        filter .8s;
+
+    cursor:pointer;
+
+}
+
+.story img{
+
+    width:270px;
+
+    border-radius:18px;
+
+    display:block;
+
+    box-shadow:
+
+        0 25px 50px rgba(0,0,0,.18);
+
+}
+
+/*====================================
+STORIES INDICATOR
+====================================*/
+
+.stories-indicator{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:45px;
+
+}
+
+.indicator{
+
+    width:70px;
+
+    height:4px;
+
+    background:rgba(0,0,0,.15);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#111;
+
+}
+.section{
+
+    width:min(1150px,90%);
+
+    margin:auto;
+
+    padding:130px 0;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:40px;
+
+    margin-bottom:60px;
+
+}
+
 </style>
 </head>
 
@@ -1259,6 +1368,86 @@ BRAND MANUAL PDF VIEWER
 
 </div>
 
+<!-- ===========================================================
+STORIES
+=========================================================== -->
+
+
+<section id="conquesta" class="section">
+
+    <div class="section-header">
+
+
+        <div>
+
+            <h2>Runbott Refill</h2>
+
+            <p class="section-description">
+
+                Desarrollo integral del sistema visual y la experiencia de marca para Runbott Refill, un nuevo modelo de ósmosis
+doméstica basado en suscripción. Manteniendo el lenguaje visual de Runbott, se creó una identidad adaptada al
+nuevo servicio y un ecosistema de comunicación coherente para todos sus puntos de contacto, desde el producto y el
+packaging hasta los entornos digitales, comerciales y físicos.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="coverflow">
+
+        <div class="stories-indicator">
+
+    <div class="indicator active">
+        <div class="fill"></div>
+    </div>
+
+    <div class="indicator">
+        <div class="fill"></div>
+    </div>
+
+    <div class="indicator">
+        <div class="fill"></div>
+    </div>
+
+    <div class="indicator">
+        <div class="fill"></div>
+    </div>
+
+    <div class="indicator">
+        <div class="fill"></div>
+    </div>
+
+        <div class="story">
+              <img src="assets/images/2-Runbott-refill-2.jpg" alt="Runbott Refill">
+        </div>
+
+        <div class="story">
+            <img src="assets/images/3-Runbott-refill-2.jpg" alt="Runbott Refill">
+        </div>
+
+        <div class="story">
+            <img src="assets/images/4-Runbott-refill-2.jpg" alt="Runbott Refill">
+        </div>
+
+        <div class="story">
+            <img src="assets/images/5-Runbott-refill-2.jpg" alt="Runbott Refill">
+        </div>
+
+        <div class="story">
+            <img src="assets/images/6-Runbott-refill-2.jpg" alt="Runbott Refill">
+        </div>
+
+    </div>
+    
+
+</div>
+
+</div>
+
+</section>
+
 <script>
 
 const teamsSystem = document.getElementById("teamsSystem");
@@ -1455,6 +1644,126 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+/*==================================================
+APPLE COVERFLOW
+==================================================*/
+
+const stories=[...document.querySelectorAll(".coverflow .story")];
+
+let active=2;
+
+const spacing=220;
+
+function render(){
+
+    stories.forEach((story,index)=>{
+
+        let offset=index-active;
+
+        if(offset>stories.length/2){
+
+            offset-=stories.length;
+
+        }
+
+        if(offset<-stories.length/2){
+
+            offset+=stories.length;
+
+        }
+
+        const x=offset*spacing;
+
+        const scale=1-(Math.abs(offset)*0.18);
+
+        const rotate=offset*-18;
+
+        const opacity=1-(Math.abs(offset)*0.30);
+
+        const blur=Math.abs(offset)*1.5;
+
+        story.style.zIndex=100-Math.abs(offset);
+
+        story.style.opacity=opacity;
+
+        story.style.filter=`blur(${blur}px)`;
+
+        story.style.transform=`
+
+            translate(-50%,-50%)
+
+            translateX(${x}px)
+
+            scale(${scale})
+
+            rotateY(${rotate}deg)
+
+        `;
+
+    });
+
+}
+
+render();
+stories.forEach((story,index)=>{
+
+    story.onclick=()=>{
+
+        active=index;
+
+        render();
+
+        startProgress();
+
+    };
+
+});
+setInterval(()=>{
+
+    active++;
+
+    if(active>=stories.length){
+
+        active=0;
+
+    }
+
+    render();
+
+    startProgress();
+
+},3500);
+
+
+const indicators=[...document.querySelectorAll(".indicator")];
+
+const fills=[...document.querySelectorAll(".fill")];
+
+function startProgress(){
+
+    fills.forEach(fill=>{
+
+        fill.style.transition="none";
+        fill.style.width="0%";
+
+    });
+
+    for(let i=0;i<active;i++){
+
+        fills[i].style.width="100%";
+
+    }
+
+    requestAnimationFrame(()=>{
+
+        fills[active].style.transition="width 3.5s linear";
+
+        fills[active].style.width="100%";
+
+    });
+
+}
 
 </script>
 
