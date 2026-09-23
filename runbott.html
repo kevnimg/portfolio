@@ -727,6 +727,266 @@ body{
 
 }
 
+/*=====================================================
+BRAND MANUAL
+=====================================================*/
+
+.brand-manual-section {
+
+  width: 90%;
+  max-width: 1200px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.brand-manual-content {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: flex-start;
+
+  gap: 32px;
+}
+
+
+/* IMAGEN */
+
+.brand-manual-image {
+
+  flex: 0 0 300px;
+
+  width: 300px;
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+}
+
+
+.brand-manual-image img {
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform .5s ease;
+}
+
+
+.brand-manual-image:hover img {
+
+  transform: scale(1.025);
+
+}
+
+
+/* INFORMACIÓN */
+
+.brand-manual-info {
+
+  flex: 1;
+
+  width: auto;
+
+  max-width: none;
+}
+
+
+.brand-manual-info h2 {
+
+  margin: 0 0 28px;
+
+  font-size: 20px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -.025em;
+}
+
+
+.brand-manual-info p {
+
+  margin: 0;
+
+  width: 100%;
+
+  font-size: 16px;
+
+  line-height: 1.25;
+
+  font-weight: 400;
+}
+
+
+/* BOTÓN */
+
+.brand-manual-button {
+
+  width: 235px;
+  height: 46px;
+
+  margin-top: 34px;
+
+  box-sizing: border-box;
+
+  border: none;
+
+  background: #000;
+
+  color: #fff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family: inherit;
+
+  font-size: 16px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  clip-path: polygon(
+    8% 0,
+    100% 0,
+    92% 100%,
+    0 100%
+  );
+
+  transition: transform .25s ease;
+}
+
+
+.brand-manual-button:hover {
+
+  transform: translateY(-2px);
+
+}
+
+
+/*=====================================================
+BRAND MANUAL LIGHTBOX
+=====================================================*/
+
+#brand-manual-lightbox {
+
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0,0,0,.72);
+
+  backdrop-filter: blur(12px);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: .35s ease;
+
+  z-index: 99999;
+}
+
+
+#brand-manual-lightbox.open {
+
+  opacity: 1;
+
+  visibility: visible;
+
+}
+
+
+/* VISOR */
+
+.brand-manual-viewer {
+
+  width: 90vw;
+
+  height: 90vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+}
+
+
+#brand-manual-pdf {
+
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  background: #fff;
+
+  border-radius: 10px;
+
+  transform: scale(.92);
+
+  transition: .35s ease;
+}
+
+
+#brand-manual-lightbox.open #brand-manual-pdf {
+
+  transform: scale(1);
+
+}
+
+
+/* CERRAR */
+
+#brand-manual-close {
+
+  position: absolute;
+
+  top: 25px;
+
+  right: 35px;
+
+  border: none;
+
+  background: none;
+
+  color: white;
+
+  font-size: 46px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  z-index: 2;
+}
+
 </style>
 </head>
 
@@ -963,6 +1223,56 @@ body{
 
 </section>
 
+<section id="brand-manual" class="brand-manual-section">
+
+  <div class="brand-manual-content">
+
+    <div class="brand-manual-image">
+      <img
+        src="assets/images/Brand-photo.png"
+        alt="Runbott Brand Manual"
+      >
+    </div>
+
+    <div class="brand-manual-info">
+
+      <h2>Brand Manual</h2>
+
+      <p>
+        Desarrollo y sistematización de la identidad visual de Runbott a través de un Brand Manual integral. El proyecto abarca la definición del sistema visual, tono y personalidad de la comunicación, dirección de fotografía y criterios de dirección de arte, así como las diferentes aplicaciones de marca. Un documento diseñado para establecer una visión coherente y escalable de Runbott en todos sus canales, soportes y puntos de contacto.
+      </p>
+
+      <button id="brand-manual-open" class="brand-manual-button">
+        Ver completo
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ==========================================================
+BRAND MANUAL PDF VIEWER
+=========================================================== -->
+
+<div id="brand-manual-lightbox">
+
+  <button id="brand-manual-close" aria-label="Cerrar">
+    &times;
+  </button>
+
+  <div class="brand-manual-viewer">
+
+    <iframe
+      id="brand-manual-pdf"
+      src=""
+      title="Runbott Brand Manual"
+    ></iframe>
+
+  </div>
+
+</div>
+
 <script>
 
 const teamsSystem = document.getElementById("teamsSystem");
@@ -1056,6 +1366,109 @@ function restartTimer() {
 showTeam(0);
 
 startTimer();
+
+</script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const openButton =
+    document.getElementById("brand-manual-open");
+
+  const lightbox =
+    document.getElementById("brand-manual-lightbox");
+
+  const pdf =
+    document.getElementById("brand-manual-pdf");
+
+  const closeButton =
+    document.getElementById("brand-manual-close");
+
+
+  const pdfPath =
+    "assets/pdf/runbott-brand-manual.pdf";
+
+
+  /* ABRIR */
+
+  function openBrandManual() {
+
+    pdf.src = pdfPath;
+
+    lightbox.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  /* CERRAR */
+
+  function closeBrandManual() {
+
+    lightbox.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+    /*
+      Quitamos el PDF del iframe al cerrar
+      para evitar que siga cargado.
+    */
+
+    setTimeout(() => {
+
+      pdf.src = "";
+
+    }, 350);
+
+  }
+
+
+  /* BOTÓN */
+
+  openButton.addEventListener(
+    "click",
+    openBrandManual
+  );
+
+
+  /* CERRAR */
+
+  closeButton.addEventListener(
+    "click",
+    closeBrandManual
+  );
+
+
+  /* CLIC FUERA */
+
+  lightbox.addEventListener("click", (event) => {
+
+    if (event.target === lightbox) {
+
+      closeBrandManual();
+
+    }
+
+  });
+
+
+  /* ESCAPE */
+
+  document.addEventListener("keydown", (event) => {
+
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+
+      closeBrandManual();
+
+    }
+
+  });
+
+});
 
 </script>
 
