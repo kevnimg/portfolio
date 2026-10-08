@@ -1,1 +1,1132 @@
+<!DOCTYPE html>
+<html lang="es">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TOMS — Walking 4 the World</title>
+
+
+    <!-- ==================================================
+         TIPOGRAFÍA
+    ================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ==================================================
+         CSS
+    ================================================== -->
+
+    <style>
+
+        /* ==================================================
+           RESET
+        ================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            background: #F5F5F5;
+            color: #1D1D1B;
+
+            font-family: "Outfit", sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* ==================================================
+           VARIABLES
+        ================================================== */
+
+        :root {
+
+            --toms-black: #1D1D1B;
+            --toms-white: #F5F5F5;
+            --toms-blue: #6AC5F0;
+
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .toms-hero {
+
+            position: relative;
+
+            width: 100%;
+            height: 62vh;
+
+            min-height: 500px;
+
+            overflow: hidden;
+
+            background: var(--toms-black);
+
+        }
+
+
+        /* ==================================================
+           HERO — IMAGEN
+        ================================================== */
+
+        .toms-hero-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+        }
+
+
+        .toms-hero-image img {
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            /*
+             * Mantiene visible la zona inferior
+             * de la fotografía.
+             */
+
+            object-position: center 70%;
+
+            /*
+             * Zoom para dar más protagonismo
+             * a la bota.
+             */
+
+            transform: scale(1.12);
+
+            transform-origin: center center;
+
+        }
+
+
+        /* ==================================================
+           HERO — OVERLAY
+        ================================================== */
+
+        .toms-hero-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.15);
+
+            pointer-events: none;
+
+        }
+
+
+        /* ==================================================
+           HERO — CONTENIDO
+        ================================================== */
+
+        .toms-hero-content {
+
+            position: absolute;
+
+            z-index: 2;
+
+            left: 50%;
+            bottom: 45px;
+
+            transform: translateX(-50%);
+
+            width: 90%;
+            max-width: 1200px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+            color: var(--toms-white);
+
+            opacity: 0;
+
+            animation:
+                heroContentIn
+                1s
+                ease-out
+                0.2s
+                forwards;
+
+        }
+
+
+        /* ==================================================
+           HERO — LOGO
+        ================================================== */
+
+        .toms-hero-logo {
+
+            width: clamp(130px, 16vw, 230px);
+
+            height: auto;
+
+            display: block;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* ==================================================
+           HERO — CATEGORÍA
+        ================================================== */
+
+        .toms-hero-category {
+
+            font-size: 11px;
+
+            font-weight: 400;
+
+            letter-spacing: 0.12em;
+
+            line-height: 1.5;
+
+            text-transform: uppercase;
+
+            color: var(--toms-white);
+
+        }
+
+
+        /* ==================================================
+           INTRODUCCIÓN
+        ================================================== */
+
+        .toms-intro {
+
+            width: 90%;
+
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            padding: 55px 0 35px;
+
+            text-align: center;
+
+        }
+
+
+        .toms-intro p {
+
+            font-size: clamp(17px, 2vw, 24px);
+
+            font-weight: 400;
+
+            line-height: 1.35;
+
+            letter-spacing: -0.02em;
+
+            color: var(--toms-black);
+
+        }
+
+
+        /* ==================================================
+           CAMBIO DE LOGO
+        ================================================== */
+
+        .toms-logo-change {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 220px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 35px;
+
+            padding: 20px 0 70px;
+
+        }
+
+
+        /* ==================================================
+           CONTENEDORES DE LOS LOGOS
+        ================================================== */
+
+        .toms-logo-old,
+        .toms-logo-new {
+
+            width: clamp(120px, 13vw, 180px);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .toms-logo-old img,
+        .toms-logo-new img {
+
+            width: 100%;
+
+            height: auto;
+
+            display: block;
+
+        }
+
+
+        /* ==================================================
+           ESTADO INICIAL
+        ================================================== */
+
+        .toms-logo-old {
+
+            opacity: 1;
+
+            transform: translateX(0);
+
+        }
+
+
+        .toms-logo-new {
+
+            opacity: 0;
+
+            transform: translateX(35px);
+
+        }
+
+
+        .toms-logo-arrow {
+
+            color: var(--toms-blue);
+
+            font-size: 30px;
+
+            font-weight: 300;
+
+            opacity: 0;
+
+            transform: translateX(-15px);
+
+        }
+
+
+        /* ==================================================
+           ANIMACIÓN — ACTIVACIÓN
+        ================================================== */
+
+        .toms-logo-change.is-visible
+        .toms-logo-old {
+
+            animation:
+                logoOldToNew
+                3s
+                ease-in-out
+                forwards;
+
+        }
+
+
+        .toms-logo-change.is-visible
+        .toms-logo-arrow {
+
+            animation:
+                logoArrowToNew
+                3s
+                ease-in-out
+                forwards;
+
+        }
+
+
+        .toms-logo-change.is-visible
+        .toms-logo-new {
+
+            animation:
+                logoNewIn
+                3s
+                ease-in-out
+                forwards;
+
+        }
+
+        
+
+
+        /* ==================================================
+           LOGO ANTIGUO
+        ================================================== */
+
+        @keyframes logoOldToNew {
+
+            /*
+             * 0 - 35%
+             * El logo permanece visible.
+             */
+
+            0% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+
+            35% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+
+            /*
+             * 35 - 55%
+             * Desaparece lentamente.
+             */
+
+            55% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-25px);
+
+            }
+
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-25px);
+
+            }
+
+        }
+
+
+        /* ==================================================
+           FLECHA
+        ================================================== */
+
+        @keyframes logoArrowToNew {
+
+            /*
+             * Al principio no aparece.
+             */
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-15px);
+
+            }
+
+
+            40% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-15px);
+
+            }
+
+
+            /*
+             * Aparece cuando desaparece
+             * el logo antiguo.
+             */
+
+            55% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+
+            /*
+             * Se mantiene visible.
+             */
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+        }
+
+
+        /* ==================================================
+           LOGO NUEVO
+        ================================================== */
+
+        @keyframes logoNewIn {
+
+            /*
+             * El nuevo logo permanece oculto.
+             */
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(35px);
+
+            }
+
+
+            45% {
+
+                opacity: 0;
+
+                transform:
+                    translateX(35px);
+
+            }
+
+
+            /*
+             * Empieza a aparecer.
+             */
+
+            65% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+
+            /*
+             * Estado final.
+             */
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translateX(0);
+
+            }
+
+        }
+
+
+        /* ==================================================
+           ANIMACIÓN HERO
+        ================================================== */
+
+        @keyframes heroContentIn {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateX(-50%)
+                    translateY(20px);
+
+            }
+
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateX(-50%)
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* ==================================================
+           SECCIONES FUTURAS
+        ================================================== */
+
+        .toms-section {
+
+            width: 100%;
+
+            min-height: 100px;
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 700px) {
+
+
+            /* --------------------------
+               HERO
+            -------------------------- */
+
+            .toms-hero {
+
+                height: 58vh;
+
+                min-height: 420px;
+
+            }
+
+
+            .toms-hero-image img {
+
+                object-position: center 70%;
+
+                transform: scale(1.12);
+
+            }
+
+
+            .toms-hero-content {
+
+                bottom: 30px;
+
+            }
+
+
+            .toms-hero-logo {
+
+                width: 120px;
+
+                margin-bottom: 16px;
+
+            }
+
+
+            .toms-hero-category {
+
+                max-width: 300px;
+
+                font-size: 8px;
+
+                line-height: 1.5;
+
+            }
+
+
+            /* --------------------------
+               INTRO
+            -------------------------- */
+
+            .toms-intro {
+
+                padding:
+                    40px
+                    0
+                    25px;
+
+            }
+
+
+            .toms-intro p {
+
+                font-size: 17px;
+
+            }
+
+
+            /* --------------------------
+               LOGOS
+            -------------------------- */
+
+            .toms-logo-change {
+
+                gap: 18px;
+
+                min-height: 150px;
+
+                padding:
+                    10px
+                    0
+                    45px;
+
+            }
+
+
+            .toms-logo-old,
+            .toms-logo-new {
+
+                width: 95px;
+
+            }
+
+
+            .toms-logo-arrow {
+
+                font-size: 22px;
+
+            }
+
+            /* ==================================================
+   VIDEO — RESPONSIVE
+================================================== */
+
+@media (max-width: 700px) {
+
+        .toms-video-section {
+            padding: 70px 6vw 80px;
+        }
+
+        .toms-video-header {
+            margin-bottom: 25px;
+        }
+
+        .toms-video-title {
+            font-size: 36px;
+        }
+
+        .toms-video-description {
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+    }
+
+
+        /* ==================================================
+           REDUCIR ANIMACIONES
+        ================================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+
+                scroll-behavior: auto;
+
+            }
+
+
+            *,
+            *::before,
+            *::after {
+
+                animation-duration: 0.01ms !important;
+
+                animation-iteration-count: 1 !important;
+
+                transition-duration: 0.01ms !important;
+
+            }
+
+        }
+
+
+    </style>
+    /* ==================================================
+   02 — VIDEO REBRANDING
+================================================== */
+
+.toms-video-section {
+    display: block;
+    width: 100%;
+    padding: 100px 5vw 120px;
+    background: #F5F5F5;
+}
+
+.toms-video-header {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.toms-video-number {
+    display: block;
+    margin-bottom: 12px;
+
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+
+    color: #6AC5F0;
+}
+
+.toms-video-title {
+    margin: 0;
+
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+
+    color: #1D1D1B;
+}
+
+.toms-video-container {
+    position: relative;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    aspect-ratio: 16 / 9;
+
+    background: #1D1D1B;
+
+    overflow: hidden;
+}
+
+.toms-video-container iframe {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+    display: block;
+}
+
+.toms-video-description {
+    width: 100%;
+    max-width: 700px;
+
+    margin: 28px auto 0;
+
+    text-align: center;
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+
+    color: #1D1D1B;
+}
+
+
+/* ==================================================
+   VIDEO — RESPONSIVE
+================================================== */
+
+@media (max-width: 700px) {
+
+    .toms-video-section {
+        padding: 70px 6vw 80px;
+    }
+
+    .toms-video-title {
+        font-size: 36px;
+    }
+
+    .toms-video-description {
+        font-size: 13px;
+        margin-top: 20px;
+    }
+
+}
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         HERO
+    ================================================== -->
+
+    <section class="toms-hero">
+
+
+        <div class="toms-hero-image">
+
+            <img
+                src="assets/toms/hero.png"
+                alt="TOMS — Walking 4 the World"
+            >
+
+        </div>
+
+
+        <div class="toms-hero-overlay"></div>
+
+
+        <div class="toms-hero-content">
+
+
+            <img
+                class="toms-hero-logo"
+                src="assets/toms/logo-toms.png"
+                alt="TOMS"
+            >
+
+
+            <p class="toms-hero-category">
+
+                REBRANDING · ESTRATEGIA · IDENTIDAD · CAMPAÑA
+
+            </p>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         INTRODUCCIÓN
+    ================================================== -->
+
+    <section class="toms-intro">
+
+
+        <p>
+
+            Una nueva identidad para acompañar la evolución de TOMS:
+            de una marca centrada en la donación a una marca comprometida
+            con un impacto social más amplio.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- ==================================================
+         CAMBIO DE LOGO
+    ================================================== -->
+
+    <section
+        class="toms-logo-change"
+        id="toms-logo-change"
+    >
+
+
+        <div class="toms-logo-old">
+
+            <img
+                src="assets/toms/old-logo-toms.png"
+                alt="Antiguo logo de TOMS"
+            >
+
+        </div>
+
+
+        <span class="toms-logo-arrow">
+
+            →
+
+        </span>
+
+
+        <div class="toms-logo-new">
+
+            <img
+                src="assets/toms/logo-toms.png"
+                alt="Nuevo logo de TOMS"
+            >
+
+        </div>
+
+
+    </section>
+
+    
+<!-- ==================================================
+     02 — VIDEO REBRANDING
+================================================== -->
+
+<section class="toms-video-section">
+
+    <div class="toms-video-header">
+
+        <span class="toms-video-number">
+            02 — REBRANDING
+        </span>
+
+        <h2 class="toms-video-title">
+            Una nueva identidad.
+        </h2>
+
+    </div>
+
+
+    <div class="toms-video-container">
+
+        <iframe
+            src="https://drive.google.com/file/d/1yHIQxPQIsaVJvfQ1LpD9PH-Iwq5S6p-u/preview"
+            allow="autoplay"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+
+    <p class="toms-video-description">
+
+        Propuesta audiovisual desarrollada con ayuda de
+        inteligencia artificial para visualizar la dirección
+        creativa de la campaña. En caso de aprobación,
+        la pieza se plantearía para una producción audiovisual real.
+
+    </p>
+
+</section>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+
+        /* ==================================================
+           ANIMACIÓN DEL CAMBIO DE LOGO
+        ================================================== */
+
+        const logoChange =
+            document.getElementById(
+                "toms-logo-change"
+            );
+
+
+        const logoObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+
+                    entries.forEach(
+
+                        (entry) => {
+
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+
+                                logoChange.classList.add(
+                                    "is-visible"
+                                );
+
+
+                                /*
+                                 * La animación solo se
+                                 * reproduce una vez.
+                                 */
+
+                                logoObserver.unobserve(
+                                    logoChange
+                                );
+
+
+                            }
+
+                        }
+
+                    );
+
+
+                },
+
+
+                {
+
+                    /*
+                     * Esperamos a que el 65%
+                     * del bloque esté visible.
+                     */
+
+                    threshold: 0.65
+
+                }
+
+            );
+
+
+        logoObserver.observe(
+            logoChange
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>
