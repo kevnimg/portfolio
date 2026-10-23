@@ -952,6 +952,23 @@ width:240px;
 
 }
 
+
+/* Prueba interactiva Blue Devil */
+@font-face{font-family:'Blue Devil KMG';src:url('assets/fonts/BlueDevil-KMG.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+#blue-devil-tester{margin-top:48px;padding:clamp(20px,4vw,42px);border:1px solid #b8ad98;border-radius:14px;background:#f1ebde;color:#111;min-width:0}
+#blue-devil-tester h3{font-size:1.35rem;margin:0 0 10px}
+#blue-devil-tester p{color:#555;font-size:14px;line-height:1.6}
+#blue-devil-tester .bd-controls{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:25px 0 20px;font-size:14px}
+#blue-devil-tester .bd-size{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#blue-devil-tester input[type=range]{width:150px;accent-color:#2f5cff;min-height:44px}
+#blue-devil-tester button{font:inherit;color:#111;border:1px solid #777;background:transparent;border-radius:30px;padding:12px 18px;min-height:44px;cursor:pointer}
+#blue-devil-tester button:hover{background:#e6dece}
+#blue-devil-tester .bd-text-label{display:block;font-size:13px;margin-bottom:10px}
+#bd-text{display:block;width:100%;max-width:100%;min-height:230px;padding:22px 16px;border:1px solid #b8ad98;border-radius:8px;background:#faf7f0;color:#111;font-family:'Blue Devil KMG',sans-serif;font-size:64px;font-weight:400;line-height:1.5;letter-spacing:normal;font-kerning:normal;font-synthesis:none;text-transform:uppercase;resize:vertical;overflow-wrap:anywhere}
+#blue-devil-tester :focus-visible{outline:3px solid #2f5cff;outline-offset:4px}
+#bd-status{margin-top:12px}
+@media(max-width:600px){#bd-text{font-size:40px;padding:15px 10px}#blue-devil-tester .bd-controls{gap:12px}#blue-devil-tester .bd-size{gap:8px}}
+
 </style>
 
 </head>
@@ -1070,6 +1087,18 @@ TIPOGRAFÍA
 
     </div>
 
+
+    <div id="blue-devil-tester" aria-labelledby="bd-title">
+      <h3 id="bd-title">Prueba Blue Devil</h3>
+      <p>Escribe tu propio texto y descubre la tipografía diseñada para Diables de Cànoves.</p>
+      <div class="bd-controls">
+        <div class="bd-size"><label for="bd-size">Tamaño</label><input id="bd-size" type="range" min="24" max="120" value="64"><output id="bd-size-value" for="bd-size">64 px</output></div>
+        <button id="bd-reset" type="button">Restablecer</button>
+      </div>
+      <label class="bd-text-label" for="bd-text">Tu texto · Vista en mayúsculas</label>
+      <textarea id="bd-text" rows="3" maxlength="300" spellcheck="false" autocapitalize="characters" aria-describedby="bd-status">DIABLES DE CÀNOVES</textarea>
+      <p id="bd-status" role="status">Cargando tipografía…</p>
+    </div>
 </section>
 
 <!-- ===========================================================
@@ -1663,6 +1692,19 @@ document.addEventListener("DOMContentLoaded", () => {
    
 </script>
 
+<script>
+(()=>{
+ const root=document.getElementById('blue-devil-tester');
+ const text=root.querySelector('#bd-text'),size=root.querySelector('#bd-size'),value=root.querySelector('#bd-size-value'),status=root.querySelector('#bd-status');
+ const initialSize=window.matchMedia('(max-width:600px)').matches?40:64;
+ function update(){text.style.fontSize=size.value+'px';value.textContent=size.value+' px';size.setAttribute('aria-valuetext',size.value+' píxeles')}
+ size.value=initialSize;update();
+ size.addEventListener('input',update);
+ root.querySelector('#bd-reset').addEventListener('click',()=>{text.value='DIABLES DE CÀNOVES';size.value=initialSize;update();text.focus()});
+ if(document.fonts){document.fonts.load('40px "Blue Devil KMG"','DIABLES DE CÀNOVES').then(f=>{status.textContent=f.length?'Blue Devil · Tipografía exclusiva de Diables de Cànoves.':'No se ha podido cargar la tipografía. Recarga la página para volver a intentarlo.'}).catch(()=>{status.textContent='No se ha podido cargar la tipografía. Recarga la página para volver a intentarlo.'})}
+ else status.textContent='Blue Devil · Tipografía exclusiva de Diables de Cànoves.';
+})();
+</script>
 </body>
 
 </html>
