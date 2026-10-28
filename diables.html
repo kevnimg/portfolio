@@ -969,6 +969,39 @@ width:240px;
 #bd-status{margin-top:12px}
 @media(max-width:600px){#bd-text{font-size:40px;padding:15px 10px}#blue-devil-tester .bd-controls{gap:12px}#blue-devil-tester .bd-size{gap:8px}}
 
+
+/* Adaptación al ancho disponible dentro de Google Sites */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip}
+  h1,h2,h3,p,a{overflow-wrap:break-word}
+}
+
+@media(max-width:900px){
+ .section-header>div{min-width:0}
+ .vestuario-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .forques-top,.forques-bottom{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .vestuario-card,.forques-card{min-width:0;padding:24px}
+ .gallery-grid{column-count:2}
+}
+@media(max-width:600px){
+ .section{padding-block:55px}
+ .section-header{flex-direction:column;gap:12px;margin-bottom:30px}
+ .section-number{min-width:0;font-size:2rem}
+ .section-header h2{font-size:clamp(26px,7vw,36px);overflow-wrap:anywhere}
+ .vestuario-grid,.forques-top,.forques-bottom{grid-template-columns:minmax(0,1fr);gap:24px}
+ .vestuario-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+ .gallery-grid{column-count:1}
+ .identity-button a{max-width:100%;padding:16px 24px}
+ .hero-logo{max-width:80%}
+ #blue-devil-tester .bd-controls>*{min-width:0;max-width:100%}
+ #blue-devil-tester input[type=range]{max-width:100%}
+ .coverflow{height:560px}
+ .story img{width:min(270px,75vw)}
+ #app-prev,#app-next{width:38px;height:44px}
+ #app-prev{left:8px}#app-next{right:8px}
+ #app-close{right:16px;top:16px}
+}
+
 </style>
 
 </head>
