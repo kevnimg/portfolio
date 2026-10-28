@@ -81,6 +81,28 @@ img.puma_img {
 .side,.side.reverse,.grid3{grid-template-columns:1fr}
 .hero{height:65vh}
 }
+
+/* Visor PDF de los proyectos de la última sección */
+body.pdf-open{overflow:hidden}
+button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
+.pdf-dialog{position:fixed;inset:0;margin:auto;width:75vw;height:88vh;height:88dvh;max-width:none;max-height:none;padding:0;border:0;border-radius:10px;background:#25282d;color:#fff;box-shadow:0 20px 70px #0005}
+.pdf-dialog::backdrop{background:rgba(0,0,0,.28)}
+.pdf-shell{height:100%;display:flex;flex-direction:column}
+.pdf-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 18px;border-bottom:1px solid #ffffff25}
+.pdf-toolbar h2{font-size:16px;line-height:1.4;margin:0}
+.pdf-actions{display:flex;align-items:center;gap:18px}
+.pdf-actions a{color:#fff;font-size:13px;text-underline-offset:4px}
+.pdf-close{width:42px;height:42px;flex-shrink:0;border:1px solid #ffffff60;border-radius:50%;background:transparent;color:#fff;font-size:28px;cursor:pointer}
+.pdf-close:hover{background:#ffffff15}
+.pdf-dialog iframe{width:100%;flex:1;min-height:0;border:0;background:#eee}
+.pdf-note{padding:9px 18px;font-size:12px}
+.pdf-empty{flex:1;display:flex;align-items:center;justify-content:center;padding:30px;text-align:center}
+.pdf-empty p{max-width:420px;font-size:16px}
+.pdf-dialog [hidden]{display:none!important}
+.pdf-trigger:focus-visible,.pdf-dialog a:focus-visible,.pdf-close:focus-visible{outline:3px solid #ffd26b;outline-offset:4px}
+.pdf-trigger:focus-visible{clip-path:none}
+@media(max-width:900px){.pdf-dialog{width:90vw}}
+@media(max-width:600px){.pdf-dialog{width:96vw;height:92dvh}.pdf-toolbar{padding:10px;gap:8px}.pdf-toolbar h2{font-size:14px}.pdf-actions{gap:10px}.pdf-actions a{font-size:12px}}
 </style>
 </head>
 <body>
@@ -152,19 +174,22 @@ img.puma_img {
 <img class="theboys_img" src="assets/images/the_boys.png">
 <h3>The Boys</h3>
 <p>Concept & Brand Content</p>
-<a href="#" class="btn">Ver proyecto</a>
+<!-- Cuando esté subido, añade la ruta del PDF en data-pdf, por ejemplo assets/pdf/nombre.pdf -->
+<button type="button" class="btn pdf-trigger" data-pdf="" data-pdf-title="The Boys" aria-haspopup="dialog">Ver proyecto</button>
 </div>
 <div class="card_cupra">
 <img class="cupra_img" src="assets/images/cupra.png">
 <h3>Cupra X EsDesign</h3>
 <p>Branding & Visual Experience</p>
-<a href="#" class="btn">Ver proyecto</a>
+<!-- Cuando esté subido, añade la ruta del PDF en data-pdf, por ejemplo assets/pdf/nombre.pdf -->
+<button type="button" class="btn pdf-trigger" data-pdf="" data-pdf-title="Cupra × EsDesign" aria-haspopup="dialog">Ver proyecto</button>
 </div>
 <div class="card_puma">
 <img class="puma_img" src="assets/images/puma.png">
 <h3>Puma</h3>
 <p>Aplication Concept</p>
-<a href="#" class="btn">Ver proyecto</a>
+<!-- Cuando esté subido, añade la ruta del PDF en data-pdf, por ejemplo assets/pdf/nombre.pdf -->
+<button type="button" class="btn pdf-trigger" data-pdf="" data-pdf-title="Puma" aria-haspopup="dialog">Ver proyecto</button>
 </div>
 </div>
 <div class="more"><a href="#" class="btn">Ver más</a></div>
@@ -180,5 +205,50 @@ if(e.isIntersecting){e.target.classList.add('show');}
 },{threshold:.15});
 document.querySelectorAll('.block').forEach(el=>obs.observe(el));
 </script>
+
+<dialog class="pdf-dialog" id="home-pdf" aria-labelledby="home-pdf-title">
+<div class="pdf-shell">
+<div class="pdf-toolbar"><h2 id="home-pdf-title">Proyecto</h2><div class="pdf-actions"><a id="home-pdf-link" target="_blank" rel="noopener" hidden>Abrir PDF ↗</a><button class="pdf-close" type="button" aria-label="Cerrar previsualización" autofocus>×</button></div></div>
+<p class="pdf-note" id="home-pdf-note" hidden>Si no aparece la previsualización, utiliza «Abrir PDF».</p>
+<iframe id="home-pdf-frame" title="Previsualización del proyecto" hidden></iframe>
+<div class="pdf-empty" id="home-pdf-empty"><p>La presentación de este proyecto estará disponible próximamente.</p></div>
+</div>
+</dialog>
+<script>
+(()=>{
+'use strict';
+const dialog=document.getElementById('home-pdf');
+const frame=document.getElementById('home-pdf-frame');
+const link=document.getElementById('home-pdf-link');
+const title=document.getElementById('home-pdf-title');
+const note=document.getElementById('home-pdf-note');
+const empty=document.getElementById('home-pdf-empty');
+let trigger=null;
+document.querySelectorAll('.pdf-trigger').forEach(button=>{
+ button.addEventListener('click',()=>{
+  const path=button.dataset.pdf.trim();
+  let url=null;
+  if(path){try{url=new URL(path,document.baseURI);if(!['http:','https:'].includes(url.protocol))url=null}catch(error){url=null}}
+  if(typeof dialog.showModal!=='function'){if(url)window.open(url.href,'_blank','noopener');else window.alert('La presentación de este proyecto estará disponible próximamente.');return}
+  trigger=button;
+  title.textContent=button.dataset.pdfTitle;
+  frame.title='Previsualización · '+button.dataset.pdfTitle;
+  const ready=Boolean(url);
+  frame.hidden=link.hidden=note.hidden=!ready;
+  empty.hidden=ready;
+  frame.removeAttribute('src');link.removeAttribute('href');
+  if(ready){link.href=url.href;if(!url.hash)url.hash='view=FitH';frame.src=url.href}
+  dialog.showModal();document.body.classList.add('pdf-open');
+ });
+});
+dialog.querySelector('.pdf-close').addEventListener('click',()=>dialog.close());
+let outside=false;
+function isOutside(e){const r=dialog.getBoundingClientRect();return e.target===dialog&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)}
+dialog.addEventListener('pointerdown',e=>{outside=isOutside(e)});
+dialog.addEventListener('click',e=>{if(outside&&isOutside(e))dialog.close();outside=false});
+dialog.addEventListener('close',()=>{document.body.classList.remove('pdf-open');frame.removeAttribute('src');link.removeAttribute('href');if(trigger)trigger.focus()});
+})();
+</script>
+
 </body>
 </html>
