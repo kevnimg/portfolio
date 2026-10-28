@@ -9,6 +9,21 @@ html{scroll-behavior:smooth}body{margin:0;background:#393938}a:focus-visible{out
 @media(max-width:760px){#km-about .tool-icons{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px 14px}#km-about .tool-icons span{opacity:1}#km-about .hero{padding-top:65px}#km-about .job{grid-template-columns:140px 1fr;gap:20px}#km-about .vision{clip-path:polygon(0 0,91% 0,100% 55px,100% 100%,0 100%)}}
 @media(max-width:600px){#km-about .inner{width:88%}#km-about .hero{grid-template-columns:1fr;padding:48px 0 32px;gap:30px}#km-about .photo{justify-self:start;width:80%;max-width:320px}#km-about .intro{grid-template-columns:1fr;gap:24px;padding-bottom:45px}#km-about .vision{padding-block:45px}#km-about .vision-grid{grid-template-columns:1fr;gap:28px}#km-about .vision h2{max-width:340px}#km-about .tool-icons{grid-template-columns:repeat(4,minmax(0,1fr))}#km-about .tool-icons span{font-size:11px}#km-about .job{grid-template-columns:1fr;gap:10px}#km-about .favorite-tools{padding-block:35px}#km-about .experience h2{font-size:28px}#km-about .runbott{padding-left:18px}#km-about .edu-grid{grid-template-columns:1fr}#km-about .contact h2{font-size:38px}#km-about .actions{flex-wrap:wrap;gap:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#km-about *{transition:none!important}}
+
+/* Adaptación al ancho disponible dentro de Google Sites */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip}
+  h1,h2,h3,p,a{overflow-wrap:break-word}
+}
+
+#km-about .hero>*,#km-about .intro>*,#km-about .vision-grid>*,#km-about .job>*,#km-about .edu-grid>*{min-width:0}
+@media(max-width:900px){
+ #km-about .tool-icons img{max-width:100%;height:auto;aspect-ratio:1}
+ #km-about .tool-icons span{overflow-wrap:anywhere}
+ #km-about .actions{flex-wrap:wrap}
+ #km-about .fine>*{min-width:0;overflow-wrap:anywhere}
+}
+
 </style></head><body><a class="skip" href="#contenido">Saltar al contenido</a><div id="km-about">
 
 <main id="contenido"><div class="inner" id="km-presentation"><section class="hero"><div><h1>Soy Kevin Moran</h1><p class="profession">Diseñador gráfico<br>especializado en Branding</p></div><div class="photo"><img src="assets/sobre-mi/foto-pf.jpg" width="600" height="600" fetchpriority="high" alt="Retrato de Kevin Moran"></div></section>
