@@ -103,6 +103,18 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 .pdf-trigger:focus-visible{clip-path:none}
 @media(max-width:900px){.pdf-dialog{width:90vw}}
 @media(max-width:600px){.pdf-dialog{width:96vw;height:92dvh}.pdf-toolbar{padding:10px;gap:8px}.pdf-toolbar h2{font-size:14px}.pdf-actions{gap:10px}.pdf-actions a{font-size:12px}}
+
+/* Ajustes de anchura para pantallas pequeñas */
+@media(max-width:900px){
+  .side,.side.reverse,.grid3{grid-template-columns:minmax(0,1fr)}
+  .side>*,.grid3>*{min-width:0}
+  .wrap img{max-width:100%;height:auto}
+  img.cupra_img{width:100%!important;max-width:100%;margin-left:0}
+  .card_theboys,.card_cupra,.card_puma{text-align:center}
+  .card_theboys img,.card_cupra img,.card_puma img{margin-inline:auto}
+  .btn{max-width:100%}
+  .full:hover img,.side:hover img,.center:hover img,.card:hover img{transform:none}
+}
 </style>
 </head>
 <body>
