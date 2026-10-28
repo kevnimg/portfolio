@@ -15,6 +15,23 @@ footer{border-top:1px solid #eee;padding:25px 24px;color:#777;font-size:12px;tex
 .pdf-dialog{border:0;padding:0;width:75%;height:85vh;height:85dvh;max-width:none;max-height:none;background:#292929;color:white;border-radius:12px;box-shadow:0 24px 100px #0007;overflow:hidden}.pdf-dialog::backdrop{background:rgba(0,0,0,.28)}.pdf-shell{display:flex;flex-direction:column;height:100%}.pdf-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;border-bottom:1px solid #ffffff26}.pdf-title{font-size:16px;font-weight:500}.pdf-tools{display:flex;align-items:center;gap:20px}.pdf-tools a{font-size:13px;text-underline-offset:4px}.close{border:1px solid #ffffff50;background:transparent;color:white;border-radius:50%;width:40px;height:40px;font-size:27px;line-height:1;cursor:pointer}.close:hover{background:#ffffff20}.pdf-note{font-size:12px;padding:9px 20px;color:#ddd;background:#363636}.pdf-frame{display:block;width:100%;border:0;background:#eee;flex:1;min-height:0}
 @media(max-width:600px){main{width:calc(100% - 36px)}.hero{height:65vw;min-height:290px}.hero-logo{width:190px}.hero p{max-width:280px;margin:15px auto 0}.intro{padding-top:45px}.evolution{gap:18px;margin:35px 0 25px}.evolution img{width:125px;height:90px}.evolution .arrow{font-size:30px}.campaign{padding-top:80px}figcaption{font-size:10px}.strategy{padding-top:50px}.strategy-section{margin-top:52px}.pillars{gap:35px 20px;margin:48px 0 35px}.pillars h3{font-size:18px}.pillars p{font-size:14px;margin-top:16px}.manual{padding:65px 0 55px}.actions{gap:15px}.actions .button{width:100%}.pdf-dialog{width:100vw;height:100dvh;border-radius:0}.pdf-toolbar{padding:12px;gap:10px}.pdf-title{font-size:13px}.pdf-tools{gap:12px}.pdf-tools a{font-size:11px}.pdf-note{padding:8px 12px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Adaptación al ancho disponible dentro de Google Sites */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip}
+  h1,h2,h3,p,a{overflow-wrap:break-word}
+}
+
+.pillars>*{min-width:0}
+@media(max-width:600px){
+ .evolution{gap:12px}
+ .evolution img{width:calc((100% - 54px)/2);max-width:125px;min-width:0}
+ .evolution .arrow{flex:0 0 30px;text-align:center}
+ .button{min-width:0;max-width:100%}
+ .pdf-title{min-width:0}.pdf-tools,.close{flex-shrink:0}
+}
+@media(max-width:400px){.pillars{grid-template-columns:minmax(0,1fr)}}
+
 </style>
 </head>
 <body>
