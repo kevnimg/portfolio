@@ -283,6 +283,7 @@ body{
 ======================================== */
 
 .team-button {
+  text-decoration: none;
   width: 235px;
   height: 46px;
 
@@ -1331,6 +1332,7 @@ RESPONSIVE
 }
 
 
+.team-button:focus-visible { outline: 3px solid #777; outline-offset: 4px; clip-path: none; }
 </style>
 </head>
 
@@ -1401,9 +1403,7 @@ RESPONSIVE
 
       </div>
 
-      <button class="team-button">
-        Real Madrid
-      </button>
+      <a class="team-button" href="https://sites.google.com/view/kevnimg-portfolio/runbott/real_madrid" target="_blank" rel="noopener">Real Madrid</a>
 
     </div>
 
@@ -1429,9 +1429,7 @@ RESPONSIVE
 
       </div>
 
-      <button class="team-button">
-        FC Barcelona
-      </button>
+      <a class="team-button" href="https://sites.google.com/view/kevnimg-portfolio/runbott/fc-barcelona" target="_blank" rel="noopener">FC Barcelona</a>
 
     </div>
 
@@ -1457,9 +1455,7 @@ RESPONSIVE
 
       </div>
 
-      <button class="team-button">
-        Atlético de Madrid
-      </button>
+      <a class="team-button" href="https://sites.google.com/view/kevnimg-portfolio/runbott/atletico_de_madrid" target="_blank" rel="noopener">Atlético de Madrid</a>
 
     </div>
 
@@ -1838,21 +1834,8 @@ function showTeam(index) {
    BOTONES
 ======================================== */
 
-teamGroups.forEach((group, index) => {
+// Los nombres de los equipos son enlaces a sus proyectos en Google Sites.
 
-  const button = group.querySelector(".team-button");
-
-  button.addEventListener("click", () => {
-
-    if (index === currentTeam) return;
-
-    showTeam(index);
-
-    restartTimer();
-
-  });
-
-});
 
 
 /* ========================================
