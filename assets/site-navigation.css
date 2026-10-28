@@ -1,0 +1,43 @@
+/* Menú común del portfolio. Selectores propios para respetar cada proyecto. */
+html{scroll-padding-top:100px}
+#km-site-header,#km-site-header *{box-sizing:border-box}
+#km-site-header{position:sticky;top:0;z-index:1000;width:100%;margin:0;padding:0;background:#222;color:#fff;border-bottom:1px solid #ffffff20;font:500 14px/1.4 Inter,Arial,sans-serif;letter-spacing:0;text-align:left;isolation:isolate}
+#km-site-header .km-menu-inner{width:min(1280px,90%);min-height:88px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;position:relative}
+#km-site-header .km-brand{display:flex;align-items:center;flex:none;width:74px;height:80px;text-decoration:none}
+#km-site-header .km-brand img{display:block;width:74px;height:78px;max-width:none;margin:0;object-fit:contain;filter:none;transform:none;border:0;border-radius:0}
+#km-site-header .km-navigation{display:flex;align-items:center;gap:34px;margin:0;padding:0;width:auto;border:0;background:none}
+#km-site-header a,#km-site-header summary{color:#fff;text-decoration:none;font:inherit;letter-spacing:0;cursor:pointer}
+#km-site-header .km-nav-link,#km-site-header summary{display:flex;align-items:center;gap:9px;min-height:44px;padding:10px 0;position:relative;list-style:none}
+#km-site-header summary::-webkit-details-marker{display:none}
+#km-site-header summary:after{content:'';width:6px;height:6px;border-right:1.5px solid;border-bottom:1.5px solid;transform:rotate(45deg);margin-top:-4px}
+#km-site-header details[open] summary:after{transform:rotate(225deg);margin-top:3px}
+#km-site-header .km-nav-link[aria-current=page],#km-site-header .km-projects.km-current summary{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:7px}
+#km-site-header .km-nav-link:hover,#km-site-header summary:hover{color:#d1d1d1}
+#km-site-header .km-projects{position:relative}
+#km-site-header .km-project-list{position:absolute;top:calc(100% + 12px);left:-24px;min-width:240px;padding:12px;margin:0;list-style:none;background:#222;border:1px solid #ffffff25;box-shadow:0 16px 30px #0003}
+#km-site-header .km-project-list li{margin:0;padding:0;list-style:none}
+#km-site-header .km-project-list a{display:block;padding:13px 15px;white-space:nowrap}
+#km-site-header .km-project-list a:hover,#km-site-header .km-project-list a[aria-current=page],#km-site-header .km-project-list a.km-ancestor{background:#ffffff12}
+#km-site-header .km-menu-toggle{display:none}
+#km-site-header a:focus-visible,#km-site-header summary:focus-visible,#km-site-header button:focus-visible{outline:2px solid #fff;outline-offset:5px}
+body>.skip:focus{z-index:1100}
+@media(max-width:700px){
+ html{scroll-padding-top:90px}
+ #km-site-header .km-menu-inner{min-height:78px;gap:15px;flex-wrap:wrap}
+ #km-site-header .km-brand{width:66px;height:72px}
+ #km-site-header .km-brand img{width:66px;height:70px}
+ #km-site-header.km-enhanced .km-menu-toggle{display:flex;align-items:center;justify-content:center;gap:12px;min-width:110px;min-height:44px;padding:10px 20px;border:0;border-radius:0;background:#fff;color:#222;clip-path:polygon(8% 0,100% 0,92% 100%,0 100%);font:600 13px/1.4 Inter,Arial,sans-serif;cursor:pointer}
+ #km-site-header .km-menu-icon,#km-site-header .km-menu-icon:before,#km-site-header .km-menu-icon:after{display:block;width:17px;height:1.5px;background:currentColor;position:relative}
+ #km-site-header .km-menu-icon:before,#km-site-header .km-menu-icon:after{content:'';position:absolute;left:0;top:-5px}
+ #km-site-header .km-menu-icon:after{top:5px}
+ #km-site-header.km-open .km-menu-icon{background:transparent}
+ #km-site-header.km-open .km-menu-icon:before{top:0;transform:rotate(45deg)}
+ #km-site-header.km-open .km-menu-icon:after{top:0;transform:rotate(-45deg)}
+ #km-site-header .km-navigation{width:100%;flex-direction:column;align-items:stretch;gap:0;padding:0 0 18px}
+ #km-site-header.km-enhanced .km-navigation{display:none}
+ #km-site-header.km-enhanced.km-open .km-navigation{display:flex;max-height:calc(100dvh - 100px);overflow-y:auto}
+ #km-site-header .km-nav-link,#km-site-header summary{padding:15px 0;border-top:1px solid #ffffff20}
+ #km-site-header .km-project-list{position:static;min-width:0;border:0;box-shadow:none;background:#ffffff05;padding:5px 12px;margin-bottom:10px}
+ #km-site-header .km-project-list a{white-space:normal}
+ #km-site-header .km-menu-toggle:focus-visible{clip-path:none;outline-offset:3px}
+}

@@ -116,8 +116,10 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
   .full:hover img,.side:hover img,.center:hover img,.card:hover img{transform:none}
 }
 </style>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="assets/site-navigation.css"><script defer src="assets/site-navigation.js"></script>
 </head>
 <body>
+<header id="km-site-header"><div class="km-menu-inner"><a class="km-brand" href="index.html" aria-label="Kevin Moran — Inicio"><img src="assets/images/k-kevin_moran.png" alt="Kevin Moran" width="1135" height="1200"></a><button class="km-menu-toggle" type="button" aria-controls="km-navigation" aria-expanded="false" aria-label="Abrir menú"><span>Menú</span><span class="km-menu-icon" aria-hidden="true"></span></button><nav class="km-navigation" id="km-navigation" aria-label="Navegación principal"><a class="km-nav-link" href="index.html" aria-current="page">Inicio</a><details class="km-projects"><summary>Proyectos</summary><ul class="km-project-list"><li><a href="runbott.html">Runbott</a></li><li><a href="diables.html">Diables de Cànoves</a></li><li><a href="toms.html">TOMS</a></li><li><a href="harvey.html">Harvey</a></li><li><a href="shaidans.html">Shaidans</a></li></ul></details><a class="km-nav-link" href="sobre-mi.html">Sobre mí</a><a class="km-nav-link" href="contacto.html">Contacto</a></nav></div></header>
 
 <header class="hero">
 <img class="bg" src="assets/images/img-luz-mides.jpg" alt="">
@@ -127,7 +129,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="proyectos">
 
 <section class="block full">
 <img class="runbott_img" src="assets/images/runbott-home.jpg" alt="">
@@ -135,7 +137,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <h2>Runbott</h2>
 <h4>Brand & Visual Design</h4>
 <p>Gestión de identidad visual, contenido y comunicación de marca.</p>
-<a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/runbott" class="btn">Ver proyecto</a>
+<a rel="noopener" href="runbott.html" class="btn">Ver proyecto</a>
 </div>
 </section>
 
@@ -145,7 +147,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <h2>Diables de Cànoves</h2>
 <h4>Identity & Cultural Branding</h4>
 <p>Creación de identidad visual, sistema gráfico y aplicaciones para una asociación cultural catalana.</p>
-<a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/diables_canoves" class="btn">Ver proyecto</a>
+<a rel="noopener" href="diables.html" class="btn">Ver proyecto</a>
 </div>
 </section>
 
@@ -155,7 +157,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <h2>Toms</h2>
 <h4>Rebranding & Brand Strategy</h4>
 <p>Replanteamiento estratégico e identidad visual para una nueva dirección de marca contemporánea.</p>
-<a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/toms" class="btn">Ver proyecto</a>
+<a rel="noopener" href="toms.html" class="btn">Ver proyecto</a>
 </div>
 </section>
 
@@ -164,7 +166,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <h2>Harvey</h2>
 <h4>Brand Identity & Visual System</h4>
 <p>Desarrollo completo de una marca desde concepto, naming, identidad visual y sistema gráfico.</p>
-<a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/harvey" class="btn">Ver proyecto</a>
+<a rel="noopener" href="harvey.html" class="btn">Ver proyecto</a>
 </div>
 <img class="harvey_img" src="assets/images/Hearvy.png" alt="">
 </section>
@@ -175,7 +177,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <h2>Shaidans</h2>
 <h4>Visual Identity & Typeface System</h4>
 <p>Desarrollo de identidad visual, sistema gráfico y tipografía personalizada para una marca conceptual de e-sports.</p>
-<a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/shaidans" class="btn">Ver proyecto</a>
+<a rel="noopener" href="shaidans.html" class="btn">Ver proyecto</a>
 </div>
 </section>
 
@@ -204,7 +206,7 @@ button.pdf-trigger{font:inherit;font-weight:700;cursor:pointer}
 <button type="button" class="btn pdf-trigger" data-pdf="" data-pdf-title="Puma" aria-haspopup="dialog">Ver proyecto</button>
 </div>
 </div>
-<div class="more"><a href="#" class="btn">Ver más</a></div>
+<div class="more"><span class="btn" aria-disabled="true" title="Otros proyectos estará disponible próximamente">Próximamente</span></div>
 </section>
 
 </main>
@@ -264,3 +266,4 @@ dialog.addEventListener('close',()=>{document.body.classList.remove('pdf-open');
 
 </body>
 </html>
+

@@ -38,8 +38,10 @@
 }
 
 </style>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"><link rel="stylesheet" href="assets/site-navigation.css"><script defer src="assets/site-navigation.js"></script>
 </head>
 <body>
+<header id="km-site-header"><div class="km-menu-inner"><a class="km-brand" href="index.html" aria-label="Kevin Moran — Inicio"><img src="assets/images/k-kevin_moran.png" alt="Kevin Moran" width="1135" height="1200"></a><button class="km-menu-toggle" type="button" aria-controls="km-navigation" aria-expanded="false" aria-label="Abrir menú"><span>Menú</span><span class="km-menu-icon" aria-hidden="true"></span></button><nav class="km-navigation" id="km-navigation" aria-label="Navegación principal"><a class="km-nav-link" href="index.html">Inicio</a><details class="km-projects km-current"><summary>Proyectos</summary><ul class="km-project-list"><li><a href="runbott.html">Runbott</a></li><li><a href="diables.html">Diables de Cànoves</a></li><li><a href="toms.html">TOMS</a></li><li><a href="harvey.html" aria-current="page">Harvey</a></li><li><a href="shaidans.html">Shaidans</a></li></ul></details><a class="km-nav-link" href="sobre-mi.html">Sobre mí</a><a class="km-nav-link" href="contacto.html">Contacto</a></nav></div></header>
 <a class="skip" href="#marca">Saltar al contenido</a>
 <header class="hero">
 <img class="hero-bg" src="assets/harvey/bg-hero.jpg" alt="" fetchpriority="high">
@@ -61,7 +63,7 @@
 <a class="gallery-item" href="assets/harvey/valla-publicitaria-2-harvey.jpg" data-caption="Publicidad exterior" aria-haspopup="dialog"><img src="assets/harvey/valla-publicitaria-2-harvey.jpg" alt="Ampliar segunda aplicación de publicidad exterior" loading="lazy"></a>
 </div></div></section>
 </main>
-<footer class="footer"><a target="_blank" rel="noopener" href="https://sites.google.com/view/kevnimg-portfolio/inicio">← Volver al portfolio</a><span>Kevin Moran · Harvey · Proyecto académico</span></footer>
+<footer class="footer"><a rel="noopener" href="index.html">← Volver al portfolio</a><span>Kevin Moran · Harvey · Proyecto académico</span></footer>
 <dialog class="viewer pdf-viewer" id="pdf-dialog" aria-labelledby="pdf-title"><div class="pdf-shell"><div class="toolbar"><h2 id="pdf-title">Brand manual · Harvey</h2><div class="toolbar-actions"><a href="assets/harvey/Brand_Manual-Harvey.pdf" target="_blank" rel="noopener">Abrir PDF ↗</a><button class="close" type="button" aria-label="Cerrar brand manual" autofocus>×</button></div></div><p class="pdf-note">Si no aparece la previsualización, utiliza «Abrir PDF».</p><iframe id="pdf-frame" class="pdf-frame" title="Brand manual de Harvey"></iframe></div></dialog>
 <dialog class="viewer image-viewer" id="image-dialog" aria-label="Galería ampliada de aplicaciones"><div class="image-shell"><div class="image-toolbar"><p id="image-count" aria-live="polite"></p><button class="close" type="button" aria-label="Cerrar galería" autofocus>×</button></div><div class="image-stage"><button class="nav-arrow" type="button" id="previous-image" aria-label="Imagen anterior">‹</button><img class="large-image" id="large-image" alt=""><button class="nav-arrow" type="button" id="next-image" aria-label="Imagen siguiente">›</button></div><p class="image-caption" id="image-caption" aria-live="polite"></p></div></dialog>
 <script>
@@ -82,3 +84,4 @@ let touchStart=null;large.addEventListener('touchstart',e=>{touchStart=e.touches
 </script>
 </body>
 </html>
+
