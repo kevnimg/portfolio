@@ -14,6 +14,21 @@
 @media(max-width:1000px){.wrap{width:88%}.hero{height:580px}.hero-inner{padding-block:60px 90px}.hero-logo{width:90%}.row{gap:7%}.specimens{gap:28px}.gallery{column-count:2}.pdf-viewer{width:90vw}}
 @media(max-width:600px){.wrap{width:calc(100% - 40px)}.hero{height:auto;min-height:660px}.hero-inner{display:flex;flex-direction:column;gap:35px;padding-block:45px 80px}.hero-copy{align-self:stretch;padding:0;gap:48px}.hero h1{font-size:39px;max-width:350px}.hero-logo{width:210px;max-height:none;align-self:center}.hero:before{width:65%;height:22%}.hero:after{width:65%;height:28%;bottom:0}.eyebrow{font-size:9px}.intro{padding:50px 0}.row{grid-template-columns:1fr;gap:35px}.row+.row{margin-top:60px}.claim{width:75%;margin:auto}.wordmark{width:85%}.identity{padding-bottom:50px}.identity .row{gap:35px}.specimens{grid-template-columns:1fr;gap:32px}.specimen{padding-bottom:25px;border-bottom:1px solid #ffffff4d}.specimen h3{margin-bottom:10px}.aa{font-size:100px}.alphabet{font-size:19px;max-width:430px}.type-section{padding:50px 0}.tester{margin-top:35px}.controls{gap:20px;align-items:stretch;flex-direction:column}.size-control{width:100%}select{width:100%}.tester-row{flex-direction:column;align-items:stretch}textarea{font-size:40px;min-height:150px}#reset-type{align-self:flex-end}.download-links{flex-direction:column;gap:16px}.applications{padding:50px 0}.gallery{column-count:1;margin-top:30px}.gallery-item:after{opacity:1}.video-block{margin-top:45px}.pdf-viewer{width:96vw;height:92dvh}.toolbar{padding:10px;gap:8px}.toolbar h2{font-size:13px}.toolbar-actions{gap:10px}.toolbar a{font-size:11px}.image-viewer{width:98vw;height:92dvh}.image-stage{grid-template-columns:34px minmax(0,1fr) 34px;gap:4px}.nav-arrow{width:34px;height:44px;font-size:24px}.image-toolbar{padding-inline:12px}.image-caption{font-size:12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Adaptación al ancho disponible dentro de Google Sites */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip}
+  h1,h2,h3,p,a{overflow-wrap:break-word}
+}
+
+.row>*,.hero-inner>*,.specimens>*,.controls>*,.tester-row>*{min-width:0}
+@media(max-width:600px){
+ select{min-width:0;max-width:100%}
+ .cut-button{max-width:100%;text-align:center}
+ .toolbar>*{min-width:0}.toolbar-actions,.close{flex-shrink:0}
+ .footer>*{min-width:0;overflow-wrap:anywhere}
+}
+
 </style></head><body><a class="skip" href="#proyecto">Saltar al contenido</a>
 <header class="hero"><div class="wrap hero-inner"><div class="hero-copy"><p class="eyebrow">Branding · Identidad visual · Diseño tipográfico · Packaging</p><h1>Una identidad<br>para competir.</h1></div><img class="hero-logo" src="assets/shaidans/logo-hero.svg" alt="Shaidans" fetchpriority="high"></div></header>
 <main><section class="intro" id="proyecto"><div class="wrap"><div class="row"><img class="claim" src="assets/shaidans/this-is-not-heaven.png" alt="This is not Heaven" loading="lazy"><div><h2>Un equipo.<br>Una voz propia.</h2><p class="copy">Shaidans es un proyecto académico de identidad de marca para un equipo de deportes electrónicos. Un sistema visual que conecta al equipo, sus jugadores y sus productos.</p></div></div><div class="row naming"><div><h2>El origen de Shaidans.</h2><p class="copy">El nombre parte de «Shaidan» y su referencia al demonio. La «s» final incorpora el plural y un guiño a «sport»: una identidad construida alrededor del equipo y la competición.</p></div><img class="wordmark" src="assets/shaidans/Shaidans-white.png" alt="Logotipo de Shaidans en blanco" loading="lazy"></div></div></section>
