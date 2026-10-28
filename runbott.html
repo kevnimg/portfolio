@@ -1333,6 +1333,40 @@ RESPONSIVE
 
 
 .team-button:focus-visible { outline: 3px solid #777; outline-offset: 4px; clip-path: none; }
+
+/* Adaptación al ancho disponible dentro de Google Sites */
+@media(max-width:900px){
+  html,body{max-width:100%;overflow-x:clip}
+  h1,h2,h3,p,a{overflow-wrap:break-word}
+}
+
+@media(max-width:1000px){
+ .products-grid{gap:32px}
+ .product-card{margin:0;flex:1 1 0;min-width:0;max-width:300px}
+ .product-image{width:100%}
+ .product-button,.team-button{max-width:100%}
+ .isotonic-image{width:min(500px,100%);flex:0 1 48%;min-width:0}
+ .isotonic-info,.brand-manual-info,.brand-manual-image{min-width:0}
+ .brand-manual-section{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:800px){
+ .isotonic-image{flex:none;width:100%;max-width:420px}
+ .brand-manual-section{grid-template-columns:minmax(0,1fr)}
+ .section-header>*{min-width:0}
+}
+@media(max-width:600px){
+ .teams-system{flex-direction:column;gap:28px}
+ .team-group,.team-group.active{width:100%;flex:none}
+ .team-images{height:auto;aspect-ratio:4/5}
+ .team-button{width:235px;min-height:46px;font-size:15px;white-space:normal;text-align:center}
+ .products-grid{flex-direction:column;align-items:center;gap:35px}
+ .product-card{flex:none;width:100%;max-width:300px}
+ .product-button{width:235px;font-size:15px}
+ .isotonic-button,.brand-manual-button,.refill-button{max-width:100%}
+ .section{padding-block:65px}
+ .hero-info{padding:45px 6%}
+}
+
 </style>
 </head>
 
